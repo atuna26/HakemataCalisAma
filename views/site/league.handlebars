@@ -1,0 +1,143 @@
+<div class="barColor"
+    style="background-color: rgb(14, 46, 60); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
+</div>
+</div>
+</div>
+<div class="locations">
+    <ul class="locationsList">
+        <li> <a href="/ayarlar/league"> Ayarlar > Ligler </a></li>
+        <li><i class="fa-solid fa-circle-question"></i></li>
+    </ul>
+</div>
+</nav>
+<div class="mainPage">
+    {{>left-navMain}}
+    <div class="hakemSettings" style="width: 450px;">
+        <div class="boxSettings">
+            <div class="boxSettingsTop" style="margin-left: 2em;">
+                <h2>Lig Ayarları</h2>
+                <p>Lig ile ilgili bilgileri aşağıdan değiştirebilirsiniz.</p>
+            </div>
+            <div class="hr"></div>
+            <div class="boxSettingsMiddle" style="margin-left: 2em;">
+                <form action="/ayarlar/league/lig" method="POST" class="boxInfo">
+                    <h2>Lig Bilgileri</h2>
+                    <div class="topInfo">
+                        <div class="input-container">
+                            <input type="text" style="width: 315px;" name="leagueName" required=""
+                                value="{{league.leagueName}}" />
+                            <label>Lig İsmi</label>
+                        </div>
+                        <select class="w3-select" name="typeSelect" id="typeSelect"
+                            style="width: 150px; height:25px; margin-top:1em">
+                            <option value="Çift Devreli Lig" {{#if (eq league.typeSelect "Çift Devreli Lig" )}}
+                                selected{{/if}}>Çift devreli lig</option>
+                            <option value="Tek Devreli Lig" {{#if (eq league.typeSelect "Tek Devreli Lig" )}}
+                                selected{{/if}}>Tek devreli lig</option>
+                        </select>
+                        <div class="input-container">
+                            <input type="number" style="width:150px;" name="importanceOfLeague"
+                                value="{{league.importanceOfLeague}}" required="" min="1" max="10" />
+                            <label style="">Ligin Önemi(1-10)</label>
+                        </div>
+                    </div>
+            </div>
+            <div class="hr"></div>
+            <div class="hakemPositions" style="margin-left:2em ;">
+                <h2>Lig İçin Gerekli Pozisyonlar</h2>
+                <div class="leagueMiddleRefereeIsChecked">
+                    <label for="leagueMiddleRefereeIsChecked">Orta Hakem</label>
+                    <input type="checkbox" checked name="leagueMiddleRefereeIsChecked" {{#if
+                        league.leagueMiddleRefereeIsChecked}}checked{{/if}} style="margin-right: 2em;">
+                </div>
+                <div class="leagueLinemanIsChecked">
+                    <label for="leagueLinemanIsChecked">Yan Hakem</label>
+                    <input type="checkbox" name="leagueLinemanIsChecked" id="leagueLinemanIsChecked" {{#if
+                        league.leagueLinemanIsChecked}}checked{{/if}} style="margin-right: 2em;">
+                </div>
+                <div class="leagueSecondLinemanIsChecked uk-hidden" id="leagueSecondLinemanIsChecked">
+                    <label for="leagueSecondLinemanIsChecked">2. Yan Hakem</label>
+                    <input type="checkbox" name="leagueSecondLinemanIsChecked" {{#if
+                        league.leagueSecondLinemanIsChecked}}checked{{/if}} style="margin-right: 2em;">
+                </div>
+                <div class="leagueFourthRefereeIsChecked">
+                    <label for="leagueFourthRefereeIsChecked">Dördüncü Hakem</label>
+                    <input type="checkbox" name="leagueFourthRefereeIsChecked" {{#if
+                        league.leagueFourthRefereeIsChecked}}checked{{/if}} style="margin-right: 2em;">
+                </div>
+                <div class="leagueVarRefereeIsChecked">
+                    <label for="leagueVarRefereeIsChecked">Var Hakem</label>
+                    <input type="checkbox" name="leagueVarRefereeIsChecked" id="leagueVarRefereeIsChecked" {{#if
+                        league.leagueVarRefereeIsChecked}}checked{{/if}}style="margin-right: 2em;">
+                </div>
+                <div class="leagueSecondVarRefereeIsChecked uk-hidden" id="leagueSecondVarRefereeIsChecked">
+                    <label for="leagueSecondVarRefereeIsChecked">2.Var Hakem</label>
+                    <input type="checkbox" name="leagueSecondVarRefereeIsChecked" {{#if
+                        league.leagueSecondVarRefereeIsChecked}}checked{{/if}}style="margin-right: 2em;">
+                </div>
+
+            </div>
+            <div class="hr" style="margin-top:1em;"></div>
+            <div class="optionButtons" style="margin: 1em 2em; display:flex; gap: 3em;">
+                <button type="submit" class="greenButton">Kaydet</button>
+                <button type="reset" class="cancelButton">İptal</button>
+            </div>
+            <div class="hr"></div>
+            <div class="dangerArea" style="margin: 1em 2em;">
+                <h2>Tehlikeli Bölge <span style="color: red;">!</span></h2>
+                <button type="button" class="redButton">Sil</button>
+            </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    {{!-- <div class="hakemSettings3 ">
+        <div class="boxSettings">
+            <div class="boxSettingsTop" style="margin-left: 2em;">
+                <h2>Lig Seçimi</h2>
+                <p>Bilgilerini getirmek istediğiniz ligi seçiniz.</p>
+            </div>
+            <div class="hr"></div>
+            <div class="boxSettingsMiddle" style="margin-left: 2em;">
+                <form action="" class="boxInfo">
+            </div>
+            <select class="w3-select" name="option" id="leagueSelect" style="width: 40%; margin:2em;">
+                <option value="" disabled selected>Lig Seçiniz</option>
+                {{#each league}}
+                <option value="{{_id}}">{{leagueName}}</option>
+                {{/each}}
+            </select>
+            <div class="hr"></div>
+            <div class="optionButtons" style="margin: 1em 2em; display:flex; gap: 3em;">
+                <button type="button" onclick="leagueChanged()" class="greenButton">Bilgileri getir</button>
+                <button type="button" onclick="window.location.href='/ayarlar/league/newleague'"
+                    class="cancelButton">Yeni Lig</button>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="hakemSettings">
+        <div class="boxSettings" style="width:max-content;">
+        {{>league-table}}
+        </div>
+    </div>
+
+
+    {{>sessionFlashMessage}}
+</div>
+<script>
+    var secondLineman = document.getElementById("leagueSecondLinemanIsChecked")
+    var firstLineman = document.getElementById("leagueLinemanIsChecked")
+    firstLineman.addEventListener("change", function () {
+        secondLineman.classList.toggle("uk-hidden")
+    })
+    var secondVarReferee = document.getElementById("leagueSecondVarRefereeIsChecked")
+    var firstVarReferee = document.getElementById("leagueVarRefereeIsChecked")
+    firstVarReferee.addEventListener("change", function () {
+        secondVarReferee.classList.toggle("uk-hidden")
+    })
+
+    leagueSecondVarRefereeIsChecked
+</script>

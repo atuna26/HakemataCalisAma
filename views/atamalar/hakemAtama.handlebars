@@ -1,0 +1,125 @@
+<div class="barColor"
+    style="background-color: rgb(35, 34, 66); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
+</div>
+</div>
+</div>
+<div class="locations">
+    <ul class="locationsList">
+        <li>Atamalar > Fikstür</li>
+        <li><i class="fa-solid fa-circle-question"></i></li>
+    </ul>
+</div>
+</nav>
+
+<div class="mainPage">
+    <div class="uk-child-width-1-4@s uk-grid-match uk-margin-top uk-margin-medium-right" style="margin: 0;width:100vw;"
+        uk-grid>
+        <div>
+            <div class="uk-card uk-card-secondary uk-card-hover uk-card-body">
+                <h3 class="uk-card-title">Hakem <img src="/img/referee.svg" width="30px" height="30px"
+                        style="float:right;opacity:0.5;"></h3>
+                <p>Toplam Hakem Sayısı:{{totalRefereeCount}}</p>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card uk-card-hover uk-card-body uk-light" style="background-color: #32d296;">
+                <h3 class="uk-card-title">Atanmamış Hakem<img src="/img/ball.svg" width="30px" height="30px"
+                        style="float:right;"></h3>
+                <p>Hiç Maçı Olmayan Hakem Sayısı: {{noMatchRefereeCount}}</p>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                <h3 class="uk-card-title">Yoğun Hakem<img src="/img/referee.svg" width="30px" height="30px"
+                        style="float:right;">
+                </h3>
+                <p>Çok Fazla Maçı Olan Hakem Sayısı: {{overTenMatchesRefereeCount}} </p>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card uk-card-primary uk-card-hover uk-card-body uk-light">
+                <h3 class="uk-card-title">Atanmış Hakem<img src="/img/referee.svg" width="30px" height="30px"
+                        style="float:right;"></h3>
+                <p>Toplan Atanmış Hakem Sayısı:{{totalRefereeWithMatchCount}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="boxSettings" style="width:max-content;">
+        <form action="/hakem/matchDate" method="POST" class="boxInfo">
+            <div style="text-align:right;">
+                <label for="dateSearchBegin">Başlangıç Tarihi:</label>
+                <input type="date" name="dateSearchBegin" id="">
+            </div>
+            <div style="text-align:right;">
+                <label for="dateSearchFinal">Bitiş Tarihi:</label>
+                <input type="date" name="dateSearchFinal" id="">
+            </div>
+
+            <button type="submit" style="height: 3em;width:12em;margin:1em;" class="greenButton">Aralık için atanmamış
+                hakemleri ara</button>
+
+        </form>
+    </div>
+    <div class="uk-margin" style="float: right; width:max-content;">
+        <input class="uk-input table-search" type="text" placeholder="Arama Giriniz..." aria-label="Input">
+    </div>
+    <div class="boxSettings" style="height: max-content;;width:max-content;">
+
+        <table class="uk-table uk-table-striped uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Hakem Numarası</th>
+                    <th>Hakem Adı</th>
+                    <th>Hakem Soyadı</th>
+                    <th>Maç Sayısı</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each refereesWithMatches}}
+                <tr>
+                    <td><a href="/hakems/{{_id}}">{{refereeNumber}}</a></td>
+                    <td style="text-align: center;"><a href="/hakems/{{_id}}">{{refereeName}}</a></td>
+                    <td><a href="/hakems/{{_id}}">{{refereeSurName}}</a></td>
+                    <td style="text-align: center;">{{matchCount}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <table id="column-example-15" style=" height: 200px;max-width: 600px;margin: 0 auto; margin-top:2em;"
+        class="charts-css column show-labels show-primary-axis show-4-secondary-axes show-data-axes">
+        <caption> Hakem Grafiği </caption>
+        <thead>
+            <tr>
+                <th scope="col"> Hakem </th>
+                <th scope="col"> Maç </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each sortedReferees}}
+            <tr>
+                <th scope="row">{{refereeName}} {{refereeSurname}} </th>
+                <td style="--size: calc({{matchCount}} / {{../totalSortedMatchCount}});color:white;">{{matchCount}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <table id="column-example-15" style=" height: 200px;max-width: 600px;margin: 0 auto; margin-top:2em;"
+        class="charts-css column show-labels show-primary-axis show-4-secondary-axes show-data-axes">
+        <caption> Hakem Grafiği </caption>
+        <thead>
+            <tr>
+                <th scope="col"> Hakem </th>
+                <th scope="col"> Maç </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each sortedNegativeReferees}}
+            <tr>
+                <th scope="row">{{refereeName}} {{refereeSurName}} </th>
+                <td style="--size: calc({{matchCount}} / {{../totalNegativeMatchCount}});color:white;">{{matchCount}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

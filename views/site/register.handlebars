@@ -1,0 +1,51 @@
+<div class="barColor"
+    style="background-color: rgb(14, 46, 60); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8"></div>
+</div>
+</div>
+<div class="locations">
+    <ul class="locationsList">
+        <li>Kayıt Sayfası</li>
+        <li><i class="fa-solid fa-circle-question"></i></li>
+    </ul>
+</div>
+</nav>
+
+<div class="registerPage">
+    <div class="registerForm">
+        <h1 style="text-align: center;">HAKEMATA KULLANICI<br> KAYIT SAYFASI</h1>
+        <div class="hr"></div>
+        <form action="/users/register" method="POST">
+            <div class="loginInfo" style="margin-left: 4em;margin-top:1em">
+                <div class="input-container">
+                    <input type="text" style="width:300px" name="username" required="" />
+                    <label>Kullanıcı Adı</label>
+                </div>
+                <div class="input-container">
+                    <input type="mail" style="width:300px" name="mail" required="" />
+                    <label>E-Posta Adresi</label>
+                </div>
+                <div class="input-container">
+                    <input type="number" style="width:300px" name="phone" required="" />
+                    <label>Telefon Numarası</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" style="width:300px" name="password" required="" />
+                    <label>Şifre</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" style="width:300px" required="" />
+                    <label>Şifre Tekrar</label>
+                </div>
+            </div>
+
+            <div class="hr"></div>
+            <div class="optionButtons" style="margin: 1em 2em; display:flex; gap: 3em;">
+                <button class="greenButton" type="submit">Kayıt Ol</button>
+                <button class="cancelButton" onclick="window.location.href='/users/login'">Giriş Yap</button>
+            </div>
+
+        </form>
+    </div>
+    {{>sessionFlashMessage}}
+
+</div>

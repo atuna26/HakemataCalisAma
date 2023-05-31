@@ -1,0 +1,160 @@
+<div class="barColor"
+    style="background-color: rgb(14, 46, 60); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
+</div>
+</div>
+</div>
+<div class="locations">
+    <ul class="locationsList">
+        <li> <a href="/ayarlar/schedule"> Ayarlar > Fikstür</a></li>
+        <li><i class="fa-solid fa-circle-question"></i></li>
+    </ul>
+</div>
+</nav>
+<div class="mainPage">
+    {{>left-navMain}}
+    <div class="hakemSettings" style="width: 450px;">
+        <div class="boxSettings">
+            <div class="boxSettingsTop" style="margin-left: 2em;">
+                <h2>Fikstür Oluştur</h2>
+                <p>Gerekli bilgileri seçtikten sonra fikstür kendiliğinden oluşturulacaktır.</p>
+            </div>
+            <div class="hr"></div>
+            <div class="boxSettingsMiddle" style="margin-left: 2em;">
+                <form action="/ayarlar/fixture/league" method="POST" class="boxInfo">
+                    <h2>Fikstür Bilgileri</h2>
+                    <div class="topInfo">
+                        <select name="scheduleLeague" style="margin-top: 1em;" id="">
+                            <option value="" disabled selected>Grup Seçiniz</option>
+                            {{#each group}}
+                            <option value="{{_id}}">{{leagueName.leagueName}} - Grup {{add @index 1}}</option>
+                            {{/each}}
+                        </select>
+                        <div class="input-container">
+                            <input type="number" style="width:120px;" name="season" required="" />
+                            <label style="">Lig Sezonu</label>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="hr" style="margin-top:1em;"></div>
+            <div class="optionButtons" style="margin: 1em 2em; display:flex; gap: 3em;">
+                <button type="submit" class="greenButton">Oluştur</button>
+            </div>
+            </form>
+
+        </div>
+
+    </div>
+    <div class="hakemSettings" style="width: 450px;">
+        <div class="boxSettings">
+            <div class="boxSettingsTop" style="margin-left: 2em;">
+                <h2>Play-Off Oluştur</h2>
+                <p>Play-Off Oluşturduktan sonra gerekli bilgileri giriniz.</p>
+            </div>
+            <div class="hr"></div>
+            <div class="boxSettingsMiddle" style="margin-left: 2em;">
+                <form action="/ayarlar/fixture/playoff" method="POST" class="boxInfo">
+                    <div class="topInfo" style="margin-top: 1em;">
+                        <select name="homeTeam"  id="">
+                            <option value="" disabled selected>Ev Takımı Seçiniz</option>
+                            {{#each team}}
+                            <option value="{{_id}}">{{leagueName.leagueName}} - {{teamName}}</option>
+                            {{/each}}
+                        </select>
+                        <select name="awayTeam" id="">
+                            <option value="" disabled selected>Deplasman Takımı Seçiniz</option>
+                            {{#each team}}
+                            <option value="{{_id}}">{{leagueName.leagueName}} - {{teamName}}</option>
+                            {{/each}}
+                        </select>
+                         <div class="input-container" style="align-items:center">
+                            <input type="number" style="width:120px;" name="season" required="" />
+                            <label style="">Lig Sezonu</label>
+                        </div>
+                    </div>
+            </div>
+            <div class="hr" style="margin-top:1em;"></div>
+            <div class="optionButtons" style="margin: 1em 2em; display:flex; gap: 3em;">
+                <button type="submit" class="greenButton">Oluştur</button>
+                <button type="reset" class="cancelButton">İptal</button>
+            </div>
+            <div class="hr"></div>
+            <div class="dangerArea" style="margin: 1em 2em;">
+                <h2>Tehlikeli Bölge <span style="color: red;">!</span></h2>
+                <button class="redButton" disabled>Sil</button>
+            </div>
+            </form>
+
+        </div>
+
+    </div>
+    <div class="boxSettings" style="height: 300px;width:max-content;">
+        <table class="uk-table uk-table-striped uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Ev Takımı</th>
+                    <th>Deplasman Takımı</th>
+                    <th>Maç Tarihi <button onclick="toggleTable()"><i class="fa-solid fa-eye"></i></button></th>
+                    <th class="refereeFixture">Orta Hakem</th>
+                    <th class="refereeFixture">Yan Hakem</th>
+                    <th class="refereeFixture">2. Yan Hakem</th>
+                    <th class="refereeFixture">Dördüncü Hakem</th>
+                    <th class="refereeFixture">VAR Hakem</th>
+                    <th class="refereeFixture">2. VAR Hakem</th>
+                    <th>Kaydet</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each fixture}}
+                <form action="/ayarlar/fixture/{{_id}}?_method=PUT" method="POST">
+                    <tr>
+                        <td>{{homeTeam.teamName}}</td>
+                        <td style="text-align: center;">{{awayTeam.teamName}}</td>
+                        <td><input type="date" value="{{#if derbyDate}}{{moment derbyDate}}{{/if}}" name="derbyDate"
+                                id=""></td>
+                        <td class="refereeFixture" style="text-align: center;"><select name="middleReferee">
+                                <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                    value="{{_id}}" {{#if (eqIds _id ../middleReferee)}} selected {{/if}}>
+                                    {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                            </select></td>
+                        <td class="refereeFixture" style="text-align: center;"><select name="linemanReferee">
+                                <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                    value="{{_id}}" {{#if (eqIds _id ../linemanReferee)}} selected {{/if}}>
+                                    {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                            </select></td>
+                        <td class="refereeFixture" style="text-align: center;"><select name="secondLinemanReferee">
+                                <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                    value="{{_id}}" {{#if (eqIds _id ../secondLinemanReferee)}} selected {{/if}}>
+                                    {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                            </select></td>
+                        <td class="refereeFixture" style="text-align: center;"><select name="fourthReferee">
+                                <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                    value="{{_id}}" {{#if (eqIds _id ../fourthReferee)}} selected {{/if}}>
+                                    {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                            </select></td>
+                        <td class="refereeFixture" style="text-align: center;"><select name="varReferee">
+                                <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                    value="{{_id}}" {{#if (eqIds _id ../varReferee)}} selected {{/if}}> {{refereeName}}
+                                    {{refereeSurName}} </option>{{/each}}
+                            </select></td>
+                        <td class="refereeFixture" style="text-align: center;"><select name="secondVarReferee">
+                                <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                    value="{{_id}}" {{#if (eqIds _id ../secondVarReferee)}} selected {{/if}}>
+                                    {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                            </select></td>
+                        <td>
+                            <input type="hidden" name="_method" value="PUT">
+                            <button type="submit" class="redButton"
+                                style="width: 5em;height:max-content;">Düzenle</button>
+                        </td>
+                </form>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+
+    {{>sessionFlashMessage}}
+
+</div>

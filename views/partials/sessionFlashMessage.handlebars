@@ -1,0 +1,14 @@
+{{#if sessionFlash.message}} <! bildirim mesajları>
+    <div class="{{sessionFlash.type}} hiddenAnimation" uk-alert style="position: fixed; bottom:0; right:0;">
+        <a class="uk-alert-close" uk-close></a>
+        {{sessionFlash.message}}
+    </div>
+    <script>
+        setTimeout(function =>{
+            quickAlert= document.querySelector(".hiddenAnimation")
+            if(quickAlert){
+                document.querySelector(".uk-alert-close").click()
+            }
+        },5000)
+    </script>
+{{/if}}

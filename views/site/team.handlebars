@@ -1,0 +1,94 @@
+<div class="barColor"
+    style="background-color: rgb(14, 46, 60); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
+</div>
+</div>
+</div>
+<div class="locations">
+    <ul class="locationsList">
+        <li> <a href="/ayarlar/team"> Ayarlar > Takım</a></li>
+        <li><i class="fa-solid fa-circle-question"></i></li>
+    </ul>
+</div>
+</nav>
+<div class="mainPage">
+    {{>left-navMain}}
+    <div class="hakemSettings" style="width: 450px;">
+        <div class="boxSettings">
+            <div class="boxSettingsTop" style="margin-left: 2em;">
+                <h2>Takım Ayarları</h2>
+                <p>Takım ile ilgili bilgileri aşağıdan değiştirebilirsiniz.</p>
+            </div>
+            <div class="hr"></div>
+            <div class="boxSettingsMiddle" style="margin-left: 2em;">
+                <form action="/ayarlar/team/takim" method="POST" class="boxInfo">
+                    <h2>Takım Bilgileri</h2>
+                    <div class="topInfo">
+                        <div class="input-container">
+                            <input type="text" style="width: 150px;" name="teamName" required=""
+                                value="{{team.teamName}}" />
+                            <label>Takım İsmi</label>
+                        </div>
+                        <select class="w3-select" id="refereeSelect" required name="leagueName"
+                            style="width: 150px; margin:1em;">
+                            <option value="" disabled selected>Lig Seçiniz</option>
+                            {{#each league}}
+                            <option value="{{_id}}">{{leagueName}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+            </div>
+            <div class="hr" style="margin-top:1em;"></div>
+            <div class="optionButtons" style="margin: 1em 2em; display:flex; gap: 3em;">
+                <button type="submit" class="greenButton">Kaydet</button>
+                <button type="reset" class="cancelButton">İptal</button>
+            </div>
+            <div class="hr"></div>
+            <div class="dangerArea" style="margin: 1em 2em;">
+                <h2>Tehlikeli Bölge <span style="color: red;">!</span></h2>
+                <button class="redButton" disabled>Sil</button>
+            </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="hakemSettings3 ">
+        <div class="boxSettings" style="height: 300px;">
+            <table class="uk-table uk-table-striped uk-table-hover">
+                <thead>
+                    <tr>
+                        <th>Takım Adı</th>
+                        <th>Takım Ligi</th>
+                        <th>Takım Seçenekleri</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each team}}
+                    <tr>
+                        <td> <a href="/ayarlar/team/{{_id}}">{{teamName}}</a></td>
+                        <td style="text-align: center;">{{leagueName.leagueName}}</td>
+                        <td style="text-align: center;;">
+                            <form action="/ayarlar/team/{{_id}}?_method=DELETE" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button style="width: 50%;" type="submit" class="redButton">Sil</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="aramaContainer">
+        <form action="/ayarlar/team/search" method="get" class="boxInfo">
+        <input type="text" name="query" placeholder="Takım ara...">
+        <button type="submit">Ara</button>
+        </form>
+    </div>
+
+    {{>sessionFlashMessage}}
+
+</div>

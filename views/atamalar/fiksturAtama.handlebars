@@ -1,0 +1,171 @@
+<div class="barColor"
+    style="background-color: rgb(35, 34, 66); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
+</div>
+</div>
+</div>
+<div class="locations">
+    <ul class="locationsList">
+        <li>Atamalar > Fikstür</li>
+        <li><i class="fa-solid fa-circle-question"></i></li>
+    </ul>
+</div>
+</nav>
+
+<div class="mainPage">
+    <div class="uk-child-width-1-4@s uk-grid-match uk-margin-top uk-margin-medium-right" style="margin: 0;width:100vw;"
+        uk-grid>
+        <div>
+            <div class="uk-card uk-card-hover uk-card-body uk-light" style="background-color: #32d296;">
+                <h3 class="uk-card-title">Fikstür<img src="/img/ball.svg" width="30px" height="30px"
+                        style="float:right;"></h3>
+                <p>Oluşturulan Maç Sayısı: {{countTotalMatch}}</p>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card uk-card-secondary uk-card-hover uk-card-body">
+                <h3 class="uk-card-title">Hakem <img src="/img/referee.svg" width="30px" height="30px"
+                        style="float:right;opacity:0.5;"></h3>
+                <p>Görevli Olan Toplam Hakem Sayısı: {{sumReferee}}</p>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                <h3 class="uk-card-title">Atanmamış Hakem<img src="/img/referee.svg" width="30px" height="30px"
+                        style="float:right;">
+                </h3>
+                <p>Hiç Hakem Atanmamış Maç Sayısı: {{countMatch}} </p>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card uk-card-primary uk-card-hover uk-card-body uk-light">
+                <h3 class="uk-card-title">Atanmış Hakem<img src="/img/referee.svg" width="30px" height="30px"
+                        style="float:right;"></h3>
+                <p>En Az 1 Hakem Atanmış Maç Sayısı: {{countMatchReferee}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="boxSettings" style="width:max-content;">
+        <form action="/fikstur/matchDate" method="POST" class="boxInfo">
+            <div style="text-align:right;">
+                <label for="dateSearchBegin">Başlangıç Tarihi:</label>
+                <input type="date" name="dateSearchBegin" id="">
+            </div>
+            <div style="text-align:right;">
+                <label for="dateSearchFinal">Bitiş Tarihi:</label>
+                <input type="date" name="dateSearchFinal" id="">
+            </div>
+
+            <button type="submit" style="height: 3em;width:12em;margin:1em;" class="greenButton">Aralık için atanmamış
+                hakemleri ara</button>
+
+        </form>
+    </div>
+    <table id="column-example-15" style=" height: 200px;max-width: 800px;margin: 0 auto; margin-top:2em;"
+        class="charts-css column show-labels show-primary-axis show-4-secondary-axes show-data-axes">
+        <caption> Hakem Grafiği </caption>
+        <thead>
+            <tr>
+                <th scope="col"> Hakem </th>
+                <th scope="col"> Maç </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Orta Hakem </th>
+                <td style="--size: calc({{countMiddleRefereeNull}} / {{sumRefereeNull}});color:white;">{{countMiddleRefereeNull}}</td>
+            </tr>
+            <tr>
+                <th scope="row"> Yan Hakem </th>
+                <td style="--size: calc({{countLinemanRefereeNull}} / {{sumRefereeNull}});color:white;">{{countLinemanRefereeNull}}</td>
+            </tr>
+            <tr>
+                <th scope="row"> 2. Yan Hakem </th>
+                <td style="--size: calc({{countSecondLinemanRefereeNull}} / {{sumRefereeNull}});color:white;">{{countSecondLinemanRefereeNull}}</td>
+            </tr>
+            <tr>
+                <th scope="row" style="padding-top: 1em;"> Dördüncü Hakem </th>
+                <td style="--size: calc({{countFourthRefereeNull}} / {{sumRefereeNull}});color:white;">{{countFourthRefereeNull}}</td>
+            </tr>
+            <tr>
+                <th scope="row"> VAR Hakem </th>
+                <td style="--size: calc({{countVarRefereeNull}} / {{sumRefereeNull}});color:white;">{{countVarRefereeNull}}</td>
+            </tr>
+            <tr>
+                <th scope="row"> 2. VAR Hakem </th>
+                <td style="--size: calc({{countSecondVarRefereeNull}} / {{sumRefereeNull}});color:white;">{{countSecondVarRefereeNull}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <div class="uk-margin" style="float: right; width:max-content;">
+            <input class="uk-input table-search" type="text" placeholder="Arama Giriniz..." aria-label="Input">
+        </div>
+        <div class="boxSettings" style="height: 300px;width:max-content;">
+
+            <table class="uk-table uk-table-striped uk-table-hover">
+                <thead>
+                    <tr>
+                        <th>Ev Takımı</th>
+                        <th>Deplasman Takımı</th>
+                        <th>Maç Tarihi <button onclick="toggleTable()"><i class="fa-solid fa-eye"></i></button></th>
+                        <th class="refereeFixture">Orta Hakem</th>
+                        <th class="refereeFixture">Yan Hakem</th>
+                        <th class="refereeFixture">2. Yan Hakem</th>
+                        <th class="refereeFixture">Dördüncü Hakem</th>
+                        <th class="refereeFixture">VAR Hakem</th>
+                        <th class="refereeFixture">2. VAR Hakem</th>
+                        <th>Kaydet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each fixture}}
+                    <form action="/ayarlar/fixture/{{_id}}?_method=PUT" method="POST">
+                        <tr>
+                            <td>{{homeTeam.teamName}}</td>
+                            <td style="text-align: center;">{{awayTeam.teamName}}</td>
+                            <td><input type="date" value="{{#if derbyDate}}{{moment derbyDate}}{{/if}}" name="derbyDate"
+                                    id=""></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="middleReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../middleReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="linemanReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../linemanReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="secondLinemanReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../secondLinemanReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="fourthReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../fourthReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="varReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../varReferee)}} selected {{/if}}>
+                                        {{refereeName}}
+                                        {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="secondVarReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../secondVarReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td>
+                                <input type="hidden" name="_method" value="PUT">
+                                <button type="submit" class="redButton"
+                                    style="width: 5em;height:max-content;">Düzenle</button>
+                            </td>
+                    </form>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

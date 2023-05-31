@@ -1,0 +1,27 @@
+<table class="uk-table uk-table-striped uk-table-hover">
+    <thead>
+        <tr>
+            <th>Ligin Adı</th>
+            <th>Ligin Puanı</th>
+            <th>Ligin Türü</th>
+            <th>Ligdeki Grup Sayısı</th>
+            <th>Lig Seçenekleri</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each league}}
+        <tr>
+            <td> <a href="/ayarlar/league/{{_id}}">{{leagueName}}</a></td>
+            <td style="text-align: center;">{{importanceOfLeague}}</td>
+            <td>{{typeSelect}}</td>
+            <td style="text-align:center">{{groupNumber}}</td>
+            <td>
+                <form action="/ayarlar/league/{{_id}}?_method=DELETE" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button style="width: 50%;" type="submit" class="redButton">Sil</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

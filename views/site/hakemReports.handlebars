@@ -1,0 +1,152 @@
+<div class="barColor"
+    style="background-color: rgb(35, 34, 66); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
+</div>
+</div>
+</div>
+<div class="locations">
+    <ul class="locationsList">
+        <li>Atamalar > Ana Sayfa</li>
+        <li><i class="fa-solid fa-circle-question"></i></li>
+    </ul>
+</div>
+</nav>
+
+<div class="mainPage">
+    {{>reportBar}}
+
+    <div class="boxSettings"
+        style="width:max-content; {{#if groups}}display:none; {{/if}}  {{#if leagues}}display:none; {{/if}} {{#if fixture}}display:none; {{/if}}">
+        <form action="/fikstur/refereeSearch" method="POST" class="boxInfo">
+            <div style="text-align:right;">
+                <label for="dateSearchBegin">Başlangıç Tarihi:</label>
+                <input type="date" value="{{moment start}}" name="dateSearchBegin" id="">
+            </div>
+            <div style="text-align:right;">
+                <label for="dateSearchFinal">Bitiş Tarihi:</label>
+                <input type="date" name="dateSearchFinal" value="{{moment end}}" id="">
+            </div>
+            <div style="text-align:right;">
+                <select name="leagueSelectFixture">
+                    <option value="" selected disabled>Lig Seçiniz</option>
+                    {{#each league}}
+                    <option value="{{_id}}">{{leagueName}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div style="text-align:right;">
+                <select name="groupSelectFixture">
+                    <option value="" selected disabled>Grup Seçiniz</option>
+                    {{#each group}}
+                    <option value="{{_id}}">{{leagueName.leagueName}} - {{_id}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <button type="submit" style="height: 3em;width:12em;margin:1em;" {{#if groups}}
+                onclick='window.location.href="/ayarlar/league/"+document.getElementById("leagueSelect").value' {{/if}}
+                class="greenButton">Aralık için hakemleri
+                ara</button>
+
+        </form>
+    </div>
+    {{#if leaguesCount}}
+    <div class="boxSettings" style="height: 300px;width:max-content;">
+        <table class="uk-table uk-table-striped uk-table-hover">
+            <thead>
+                <tr>
+                    <th class=" uk-text-center uk-text-middle">Lig Adı</th>
+                    <th class=" uk-text-center">Orta Hakem Sayısı</th>
+                    <th class="uk-text-center">Yan Hakem Sayısı</th>
+                    <th class="uk-text-center">2. Yan Hakem Sayısı</th>
+                    <th class="uk-text-center">Dördüncü Hakem Sayısı</th>
+                    <th class="uk-text-center">VAR Hakem Sayısı</th>
+                    <th class="uk-text-center">2. VAR Hakem Sayısı</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each leaguesCount}}
+                <tr>
+                    <td class="uk-text-center"><a
+                            href="/hakem/lig/{{this.id}}/gruplar?dateSearchBegin={{../start}}&dateSearchFinal={{../end}}">{{
+                            this.name }}</a>
+                    </td>
+                    <td class="uk-text-center">{{ this.middleRefereeCount }}</td>
+                    <td class="uk-text-center">{{this.linemanRefereeCount}}</td>
+                    <td class="uk-text-center">{{this.secondLinemanRefereeCount}}</td>
+                    <td class="uk-text-center">{{this.fourthRefereeCount}}</td>
+                    <td class="uk-text-center">{{this.varRefereeCount}}</td>
+                    <td class="uk-text-center">{{this.secondVarRefereeCount}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{/if}}
+    {{#if groupsCount}}
+    <div class="boxSettings" style="height: 300px;width:max-content;">
+        <table class="uk-table uk-table-striped uk-table-hover">
+            <thead>
+                <tr>
+                    <th class=" uk-text-center uk-text-middle">Grup Adı</th>
+                    <th class=" uk-text-center">Orta Hakem Sayısı</th>
+                    <th class="uk-text-center">Yan Hakem Sayısı</th>
+                    <th class="uk-text-center">2. Yan Hakem Sayısı</th>
+                    <th class="uk-text-center">Dördüncü Hakem Sayısı</th>
+                    <th class="uk-text-center">VAR Hakem Sayısı</th>
+                    <th class="uk-text-center">2. VAR Hakem Sayısı</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each groupsCount}}
+                <tr>
+                <tr>
+                    <td class="uk-text-center"><a
+                            href="/hakem/gruplar/{{this.id}}/takimlar?dateSearchBegin={{../start}}&dateSearchFinal={{../end}}">{{
+                            this.id }}</a>
+                    </td>
+                    <td class="uk-text-center">{{ this.middleRefereeCount }}</td>
+                    <td class="uk-text-center">{{this.linemanRefereeCount}}</td>
+                    <td class="uk-text-center">{{this.secondLinemanRefereeCount}}</td>
+                    <td class="uk-text-center">{{this.fourthRefereeCount}}</td>
+                    <td class="uk-text-center">{{this.varRefereeCount}}</td>
+                    <td class="uk-text-center">{{this.secondVarRefereeCount}}</td>
+                </tr>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{/if}}
+
+    {{#if teamsCount}}
+    <!-- Hakem Raporları -->
+    <h1>Hakem Raporları</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Takım</th>
+                <th>Hakemler</th>
+                <th>Maç Sayısı</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each teamsCount}}
+            <tr>
+                <td>{{team}}</td>
+                <td>
+                    <ul>
+                        {{#each referees}}
+                        <li><a href="/hakems/{{this.id}}">{{this.name}}</a></li>
+                        {{/each}}
+                    </ul>
+                </td>
+                <td>{{matchesCount}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    {{/if}}
+
+</div>

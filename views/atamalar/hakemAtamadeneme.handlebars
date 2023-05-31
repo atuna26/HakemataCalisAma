@@ -1,0 +1,132 @@
+<div class="barColor"
+    style="background-color: rgb(35, 34, 66); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
+</div>
+</div>
+</div>
+<div class="locations">
+    <ul class="locationsList">
+        <li>Atamalar > Fikstür</li>
+        <li><i class="fa-solid fa-circle-question"></i></li>
+    </ul>
+</div>
+</nav>
+    <h1> {{ referee.refereeName }} {{referee.refereeSurName}}</h1>
+
+<div class="mainPage">
+
+
+
+    <div class="boxSettings" style="height: max-content;;width:max-content;">
+
+        <table class="uk-table uk-table-striped uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Lig Adı</th>
+                    <th>Grup Numarası</th>
+                    <th>Yönetilen Maç</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each groups}}
+                <tr>
+                    <td>{{leagueName.leagueName}}</td>
+                    <td>{{this.group}}</td>
+                    <td style="text-align: center;">{{this.numFixtures}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <table id="column-example-15" style=" height: 200px;max-width: 600px;margin: 0 auto; margin-top:2em;"
+        class="charts-css column show-labels show-primary-axis show-4-secondary-axes show-data-axes">
+        <caption> Hakem Grafiği </caption>
+        <thead>
+            <tr>
+                <th scope="col"> Hakem </th>
+                <th scope="col"> Maç </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each groups}}
+            <tr>
+                <th scope="row">{{this.group}}</th>
+                <td style="--size: calc({{this.numFixtures}} / {{../totalFixtures}});color:white;">{{matchCount}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div class="boxSettings" style="height: max-content;;width:450px;">
+
+        <table class="uk-table uk-table-striped uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Lig Adı</th>
+                    <th>Yönetilen Maç</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each leagues}}
+                <tr>
+                    <td>{{this.league}}</td>
+                    <td style="text-align: center;">{{this.numFixtures}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <table id="column-example-15" style=" height: 200px;max-width: 600px;margin: 0 auto; margin-top:2em;"
+        class="charts-css column show-labels show-primary-axis show-4-secondary-axes show-data-axes">
+        <caption> Hakem Grafiği </caption>
+        <thead>
+            <tr>
+                <th scope="col"> Hakem </th>
+                <th scope="col"> Maç </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each leagues}}
+            <tr>
+                <th scope="row">{{this.league}}</th>
+                <td style="--size: calc({{this.numFixtures}} / {{../totalFixtures}});color:white;">{{matchCount}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div class="boxSettings" style="height: max-content;;width:max-content;">
+
+        <table class="uk-table uk-table-striped uk-table-hover">
+            <thead>
+                <tr>
+                    <th>Takım Adı</th>
+                    <th>Yönetilen Maç</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each teams}}
+                <tr>
+                    <td>{{this.team}}</td>
+                    <td style="text-align: center;">{{this.numFixtures}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <table id="column-example-15" style=" height: 200px;max-width: 600px;margin: 0 auto; margin-top:2em;"
+        class="charts-css column show-labels show-primary-axis show-4-secondary-axes show-data-axes">
+        <caption> Hakem Grafiği </caption>
+        <thead>
+            <tr>
+                <th scope="col"> Hakem </th>
+                <th scope="col"> Maç </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each teams}}
+            <tr>
+                <th scope="row">{{this.team}}</th>
+                <td style="--size: calc({{this.numFixtures}} / ({{../totalFixtures}} * 2));color:white;">{{matchCount}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
