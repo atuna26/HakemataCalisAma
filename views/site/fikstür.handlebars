@@ -48,14 +48,14 @@
     <div class="hakemSettings" style="width: 450px;">
         <div class="boxSettings">
             <div class="boxSettingsTop" style="margin-left: 2em;">
-                <h2>Play-Off Oluştur</h2>
-                <p>Play-Off Oluşturduktan sonra gerekli bilgileri giriniz.</p>
+                <h2>Maç Oluştur</h2>
+                <p>Maç Oluşturduktan sonra gerekli bilgileri giriniz.</p>
             </div>
             <div class="hr"></div>
             <div class="boxSettingsMiddle" style="margin-left: 2em;">
                 <form action="/ayarlar/fixture/playoff" method="POST" class="boxInfo">
                     <div class="topInfo" style="margin-top: 1em;">
-                        <select name="homeTeam"  id="">
+                        <select name="homeTeam" id="">
                             <option value="" disabled selected>Ev Takımı Seçiniz</option>
                             {{#each team}}
                             <option value="{{_id}}">{{leagueName.leagueName}} - {{teamName}}</option>
@@ -67,9 +67,36 @@
                             <option value="{{_id}}">{{leagueName.leagueName}} - {{teamName}}</option>
                             {{/each}}
                         </select>
-                         <div class="input-container" style="align-items:center">
+                        <div class="input-container" style="align-items:center;margin-top:2em;">
                             <input type="number" style="width:120px;" name="season" required="" />
                             <label style="">Lig Sezonu</label>
+                        </div>
+                        <div class="input-container" style="align-items:center; margin-top:1.7em;">
+                            <input type="date" name="derbyDate" style="width:120px" id=""></td>
+                            <select name="derbyHours" id="">
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                            </select>
+                            <select name="derbyMinutes" id="">
+                                <option value="00">00</option>
+                                <option value="30">30</option>
+
+                            </select>
+
+
                         </div>
                     </div>
             </div>
@@ -95,6 +122,7 @@
                     <th>Ev Takımı</th>
                     <th>Deplasman Takımı</th>
                     <th>Maç Tarihi <button onclick="toggleTable()"><i class="fa-solid fa-eye"></i></button></th>
+                    <th class="refereeFixture">Maç Saati</th>
                     <th class="refereeFixture">Orta Hakem</th>
                     <th class="refereeFixture">Yan Hakem</th>
                     <th class="refereeFixture">2. Yan Hakem</th>
@@ -112,6 +140,30 @@
                         <td style="text-align: center;">{{awayTeam.teamName}}</td>
                         <td><input type="date" value="{{#if derbyDate}}{{moment derbyDate}}{{/if}}" name="derbyDate"
                                 id=""></td>
+                        <td> <select name="derbyHours" id="">
+                                <option value="09" {{#if (eq derbyHours "09")}} selected {{/if}}>09</option>
+                                <option value="10" {{#if (eq derbyHours "10")}} selected {{/if}}>10</option>
+                                <option value="11" {{#if (eq derbyHours "11")}}selected {{/if}}>11</option>
+                                <option value="12" {{#if (eq derbyHours "12")}}selected {{/if}}>12</option>
+                                <option value="13" {{#if (eq derbyHours "13")}}selected {{/if}}>13</option>
+                                <option value="14" {{#if (eq derbyHours "14")}}selected {{/if}}>14</option>
+                                <option value="15" {{#if (eq derbyHours "15")}}selected {{/if}}>15</option>
+                                <option value="16" {{#if (eq derbyHours "16")}}selected {{/if}}>16</option>
+                                <option value="17" {{#if (eq derbyHours "17")}}selected {{/if}}>17</option>
+                                <option value="18" {{#if (eq derbyHours "18")}}selected {{/if}}>18</option>
+                                <option value="19" {{#if (eq derbyHours "19")}}selected {{/if}}>19</option>
+                                <option value="20" {{#if (eq derbyHours "20")}}selected {{/if}}>20</option>
+                                <option value="21" {{#if (eq derbyHours "21")}}selected {{/if}}>21</option>
+                                <option value="22" {{#if (eq derbyHours "22")}}selected {{/if}}>22</option>
+                                <option value="23" {{#if (eq derbyHours "23")}}selected {{/if}}>23</option>
+                            </select>
+                            <select name="derbyMinutes" id="">
+                                <option value="00"{{#if (eq derbyMinutes "00")}}selected {{/if}}>00</option>
+                                <option value="30"{{#if (eq derbyMinutes "30")}}selected {{/if}}>30</option>
+
+                            </select>
+                        </td>
+                        </td>
                         <td class="refereeFixture" style="text-align: center;"><select name="middleReferee">
                                 <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
                                     value="{{_id}}" {{#if (eqIds _id ../middleReferee)}} selected {{/if}}>

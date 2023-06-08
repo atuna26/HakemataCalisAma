@@ -48,7 +48,6 @@ router.get("/register",(req,res) =>{
 router.post("/register",(req,res) =>{
     User.create(req.body, (error,user) =>{
         res.redirect("/users/login")
-        
     })
 })
 

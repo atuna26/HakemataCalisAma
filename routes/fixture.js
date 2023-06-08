@@ -24,7 +24,7 @@ router.post("/playoff", async (req,res) => {
   Fixture.create({...req.body}).then(team =>{
     req.session.sessionFlash = {
       type: "uk-alert-primary",
-      message: `Playoff Başarıyla oluşturuldu.`
+      message: `Maç Başarıyla oluşturuldu.`
     };
     res.redirect("/ayarlar/fixture")
   })
@@ -45,7 +45,8 @@ router.post("/league", async (req, res) => {
     const group = await Group.findById(groupNo).populate("teamName");
     const leagueNo = group.leagueName
     const teams = group.teamName;
-
+    const leagueId = await League.findById(leagueNo).populate("typeSelect");
+    console.log(leagueId.typeSelect)
     // Takımlar arasındaki tüm müsabakaları oluştur
     const fixtures = [];
     for (let i = 0; i < teams.length; i++) {
@@ -66,10 +67,17 @@ router.post("/league", async (req, res) => {
           awayTeam: homeTeam,
           season: season,
         });
-        await fixture1.save();
-        await fixture2.save();
-        fixtures.push(fixture1);
-        fixtures.push(fixture2);
+        if(leagueId.typeSelect==="Çift Devreli Lig")
+        {
+          await fixture1.save();
+          await fixture2.save();
+          fixtures.push(fixture1);
+          fixtures.push(fixture2);
+        }else if(leagueId.typeSelect==="Tek Devreli Lig"){
+          await fixture1.save();
+          fixtures.push(fixture1);
+        }
+       
 
       }
     }

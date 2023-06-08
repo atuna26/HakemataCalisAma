@@ -9,6 +9,45 @@ const Post = require("../models/Post")
 const { text } = require("body-parser")
 
 
+router.get("/script", async(req,res) =>{
+  res.render("site/script")
+})
+
+router.post("/scriptBaslat" ,async(req,res)=>{
+  try{
+   // Takımları oluştur
+const teams = [];
+for (let i = 1; i < 160; i++) {
+  const team = await Team.create({
+    teamName: "Hakemata Test Takımı (Script)" + i,
+    leagueName: "64804c0dcb3083a9e08c8d3a",
+  });
+  teams.push(team._id);
+}
+
+// Grupları oluştur
+const groups = [];
+for (let j = 0; j < 40; j++) {
+  const teamNames = teams.slice(j * 4, (j + 1) * 4);
+  const group = await Group.create({
+    leagueName: "64804c0dcb3083a9e08c8d3a",
+    teamName: teamNames,
+  });
+  groups.push(group._id);
+}
+
+// Takımların gruplarını güncelle
+for (const teamId of teams) {
+  const team = await Team.findById(teamId);
+  team.groups = groups;
+  await team.save();
+}
+    res.redirect("/")
+  } catch (error) {
+    console.error(error);
+  }
+})
+
 //ana sayfa
 router.get("/", async (req,res) =>{/* 
     const league = await League.find();
@@ -417,6 +456,200 @@ router.get('/hakem/gruplar/:id/takimlar', async (req, res) => {
   }
 });
 
+router.post('/:id/hakem/leagueSearch', async (req, res) => {
+  try {
+    const { dateSearchBegin, dateSearchFinal, leagueSelectFixture, groupSelectFixture} = req.body;
+    let start = new Date(dateSearchBegin);
+    let end = new Date(dateSearchFinal);
+    if(leagueSelectFixture){
+      res.redirect(`/lig/${leagueSelectFixture}/gruplar?dateSearchBegin=${start}&dateSearchFinal=${end}`)
+    }
+    if(groupSelectFixture){
+      res.redirect(`/grup/${groupSelectFixture}/maclar?dateSearchBegin=${start}&dateSearchFinal=${end}`)
+    }else{
+      const referee = await Post.findById(req.params.id).lean();
+  
+      const fixtures = await Fixture.find({
+        $and: [
+          {
+            derbyDate: {
+              $gte: new Date(start),
+              $lte: new Date(end)
+            }
+          }
+        ],
+        $or: [
+          { middleReferee: referee._id },
+          { linemanReferee: referee._id },
+          { secondLinemanReferee: referee._id },
+          { fourthReferee: referee._id },
+          { varReferee: referee._id },
+          { secondVarReferee: referee._id }
+        ]
+      });
+    
+      let leagues = {};
+    
+      fixtures.forEach(fixture => {
+
+    
+        // Lig bilgisi
+        if (fixture.leagueId in leagues) {
+          leagues[fixture.leagueId]++;
+        } else {
+          leagues[fixture.leagueId] = 1;
+        }
+    
+      });
+    
+      let outputLeagues = [];
+      for (const [leagueId, numFixtures] of Object.entries(leagues)) {
+        const league = await League.findById(leagueId);
+        outputLeagues.push({
+          league: league.leagueName,
+          leagueId: league._id,
+          numFixtures: numFixtures
+        });
+      }
+      res.render('atamalar/hakemAtamadeneme', {
+        referee:referee,
+        leagues: outputLeagues,
+        start,end, 
+      });
+  }
+} catch (error) {
+    console.error(error);
+  }
+});
+
+
+router.get('/:id/hakem/groupSearch', async (req, res) => {
+  try {
+    const { dateSearchBegin, dateSearchFinal, leagueId} = req.query;
+    let start = new Date(dateSearchBegin);
+    let end = new Date(dateSearchFinal);
+
+      const referee = await Post.findById(req.params.id).lean();
+  
+      const fixtures = await Fixture.find({
+        $and: [
+          {
+            derbyDate: {
+              $gte: new Date(start),
+              $lte: new Date(end)
+            },
+            leagueId:leagueId,
+          }
+        ],
+        $or: [
+          { middleReferee: referee._id },
+          { linemanReferee: referee._id },
+          { secondLinemanReferee: referee._id },
+          { fourthReferee: referee._id },
+          { varReferee: referee._id },
+          { secondVarReferee: referee._id }
+        ]
+      });
+    
+      let groups = {};
+    
+      fixtures.forEach(fixture => {
+
+    
+        if (fixture.groupId in groups) {
+          groups[fixture.groupId]++;
+        } else {
+          groups[fixture.groupId] = 1;
+        }
+    
+      });
+    
+      let outputGroups = [];
+    for (const [groupId, numFixtures] of Object.entries(groups)) {
+      const group = await Group.findById(groupId).populate({path:"leagueName", model: League}).lean();
+      outputGroups.push({
+        leagueName: group.leagueName,
+        group: group._id,
+        numFixtures: numFixtures
+      });
+    }
+      res.render('atamalar/hakemAtamadeneme', {
+        referee:referee,
+        groups: outputGroups,
+        start,end
+      });
+} catch (error) {
+    console.error(error);
+  }
+});
+
+router.get('/:id/hakem/matchSearch', async (req, res) => {
+  try {
+    const { dateSearchBegin, dateSearchFinal, groupId} = req.query;
+    let start = new Date(dateSearchBegin);
+    let end = new Date(dateSearchFinal);
+
+      const referee = await Post.findById(req.params.id).lean();
+  
+      const fixtures = await Fixture.find({
+        $and: [
+          {
+            derbyDate: {
+              $gte: new Date(start),
+              $lte: new Date(end)
+            },
+            groupId:groupId,
+          }
+        ],
+        $or: [
+          { middleReferee: referee._id },
+          { linemanReferee: referee._id },
+          { secondLinemanReferee: referee._id },
+          { fourthReferee: referee._id },
+          { varReferee: referee._id },
+          { secondVarReferee: referee._id }
+        ]
+      });
+    
+      let teams = {};
+    
+      fixtures.forEach(fixture => {
+
+    
+        const homeTeamId = fixture.homeTeam;
+      const awayTeamId = fixture.awayTeam;
+  
+      if (homeTeamId in teams) {
+        teams[homeTeamId]++;
+      } else {
+        teams[homeTeamId] = 1;
+      }
+  
+      if (awayTeamId in teams) {
+        teams[awayTeamId]++;
+      } else {
+        teams[awayTeamId] = 1;
+      }
+    
+      });
+    
+      let outputTeams = [];
+      for (const [teamId, numFixtures] of Object.entries(teams)) {
+        const team = await Team.findById(teamId);
+        outputTeams.push({
+          team: team.teamName,
+          numFixtures: numFixtures
+        });
+      }
+      res.render('atamalar/hakemAtamadeneme', {
+        referee:referee,
+        teams: outputTeams,
+        start,end
+      });
+} catch (error) {
+    console.error(error);
+  }
+});
 
 //hakem detayı
 router.get("/hakems/:id",async (req,res) =>{

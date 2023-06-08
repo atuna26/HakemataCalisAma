@@ -4,6 +4,7 @@ const { Schema } = require("mongoose")
 const LeagueSchema = new mongoose.Schema({
     leagueName : {type:String, require:true, unique: true},
     typeSelect : {type:String, require: true},
+    matchDuration: {type:Number},
     importanceOfLeague : {type: Number, require:true},
     leagueMiddleRefereeIsChecked : {type:Boolean, default:false},
     leagueLinemanIsChecked : {type:Boolean, default:false},

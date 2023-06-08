@@ -7,6 +7,8 @@ const FixtureSchema = new mongoose.Schema({
     homeTeam: {type: Schema.Types.ObjectId, ref: "Team" },
     awayTeam: {type: Schema.Types.ObjectId, ref: "Team"},
     derbyDate: {type:Date},
+    derbyHours: {type:String},
+    derbyMinutes: {type:String},
     season: {type:Number},
     middleReferee: { type: Schema.Types.ObjectId, ref: "Post"},
     linemanReferee: { type: Schema.Types.ObjectId, ref: "Post"},

@@ -40,6 +40,12 @@
                                 value="{{league.importanceOfLeague}}" required="" min="1" max="10" />
                             <label style="">Ligin Önemi(1-10)</label>
                         </div>
+                        <div class="input-container">
+                            <input type="number" style="width:150px;" name="matchDuration"
+                                value="{{league.matchDuration}}" required="" value="90" />
+                            <label style="">Maç Süresi</label>
+                        </div>
+
                     </div>
             </div>
             <div class="hr"></div>
@@ -120,7 +126,7 @@
 
     <div class="hakemSettings">
         <div class="boxSettings" style="width:max-content;">
-        {{>league-table}}
+            {{>league-table}}
         </div>
     </div>
 
