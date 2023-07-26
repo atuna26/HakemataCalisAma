@@ -1,120 +1,220 @@
-<div class="barColor"
-    style="background-color: rgb(14, 46, 60); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
-</div>
-</div>
-</div>
-<div class="locations">
-    <ul class="locationsList">
-        <li> <a href="/ayarlar/schedule"> Ayarlar > Fikstür</a></li>
+<div class="navbar-expand-lg bg-dark text-light rounded-bottom-4">
+    <ul class="locationsList d-flex justify-content-between" style="padding: 0 30px 0 30px">
+        <li><a href="/ayarlar/referee">Ayarlar > Fikstür</a></li>
         <li><i class="fa-solid fa-circle-question"></i></li>
     </ul>
 </div>
-</nav>
+
+
+<div class="container mx-3" style="margin-left: 0;">
+    <div class="row justify-content-center">
+        {{>left-navMain}}
+        <div
+            class="uk-card uk-card-default uk-card-large uk-card-body uk-card-hover justify-content-center col-md-5 my-3">
+
+
+            <h3 class="uk-card-title text-center">Fikstür Oluştur</h3>
+            <p class="uk-text-meta uk-margin-remove-top text-center">Gerekli bilgileri seçtikten sonra fikstür
+                kendiliğinden oluşturulacaktır.</p>
+            <hr class="uk-divider-icon">
+            <form action="/ayarlar/fixture/league" method="POST">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="uk-card-title text-center">Fikstür Bilgileri</h2>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <select class="uk-select" id="" name="scheduleLeague" aria-label="Hakem Seçiniz: ">
+                                    <option value="" disabled selected>Grup Seçiniz</option>
+                                    {{#each group}}
+                                    <option value="{{_id}}">{{leagueName.leagueName}} - Grup {{add @index 1}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-12 my-3">
+                                <input class="uk-input" type="number" name="season" required placeholder="Lig Sezonu"
+                                    min="0" aria-label="Lig Sezonu">
+                            </div>
+                            <div class="row justify-content-center column-gap-2 my-4" style="">
+                                <button class="greenButton col-md-4" type="submit">Oluştur</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div
+            class="uk-card uk-card-default uk-card-large uk-card-body uk-card-hover justify-content-center col-md-6 my-3">
+            <h3 class="uk-card-title text-center">Maç Oluştur</h3>
+            <p class="uk-text-meta uk-margin-remove-top text-center">Maç Oluşturmak için gerekli bilgileri giriniz.</p>
+            <hr class="uk-divider-icon">
+            <form action="/ayarlar/fixture/playoff" method="POST">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="uk-card-title text-center">Maç Bilgileri</h2>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <select class="uk-select" id="" name="homeTeam" aria-label="Hakem Seçiniz: ">
+                                    <option value="" disabled selected>Ev Takımı Seçiniz</option>
+                                    {{#each team}}
+                                    <option value="{{_id}}">{{leagueName.leagueName}} - {{teamName}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-12 my-3">
+                                <select class="uk-select" id="" name="awayTeam" aria-label="Hakem Seçiniz: ">
+                                    <option value="" disabled selected>Deplasman Takımı Seçiniz</option>
+                                    {{#each team}}
+                                    <option value="{{_id}}">{{leagueName.leagueName}} - {{teamName}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input class="uk-input" type="number" name="season" required
+                                        placeholder="Lig Sezonu" min="0" aria-label="Lig Sezonu">
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="uk-input" type="date" name="derbyDate" required>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="uk-select" name="derbyHours" id="">
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="uk-select" name="derbyMinutes" id="">
+                                        <option value="00">00</option>
+                                        <option value="30">30</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center column-gap-2 my-4" style="">
+                                <button class="greenButton col-md-4" type="submit">Oluştur</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="uk-table uk-table-striped uk-table-hover">
+                <thead>
+                    <tr>
+                        <th>Ev Takımı</th>
+                        <th>Deplasman Takımı</th>
+                        <th>Maç Tarihi <button onclick="toggleTable()"><i class="fa-solid fa-eye"></i></button></th>
+                        <th class="refereeFixture">Maç Saati</th>
+                        <th class="refereeFixture">Orta Hakem</th>
+                        <th class="refereeFixture">Yan Hakem</th>
+                        <th class="refereeFixture">2. Yan Hakem</th>
+                        <th class="refereeFixture">Dördüncü Hakem</th>
+                        <th class="refereeFixture">VAR Hakem</th>
+                        <th class="refereeFixture">2. VAR Hakem</th>
+                        <th>Kaydet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each fixture}}
+                    <form action="/ayarlar/fixture/{{_id}}?_method=PUT" method="POST">
+                        <tr>
+                            <td >{{homeTeam.teamName}}</td>
+                            <td  style="text-align: center;">{{awayTeam.teamName}}</td>
+                            <td ><input type="date" value="{{#if derbyDate}}{{moment derbyDate}}{{/if}}" name="derbyDate"
+                                    id=""></td>
+                            <td> <select name="derbyHours" id="">
+                                    <option value="09" {{#if (eq derbyHours "09" )}} selected {{/if}}>09</option>
+                                    <option value="10" {{#if (eq derbyHours "10" )}} selected {{/if}}>10</option>
+                                    <option value="11" {{#if (eq derbyHours "11" )}}selected {{/if}}>11</option>
+                                    <option value="12" {{#if (eq derbyHours "12" )}}selected {{/if}}>12</option>
+                                    <option value="13" {{#if (eq derbyHours "13" )}}selected {{/if}}>13</option>
+                                    <option value="14" {{#if (eq derbyHours "14" )}}selected {{/if}}>14</option>
+                                    <option value="15" {{#if (eq derbyHours "15" )}}selected {{/if}}>15</option>
+                                    <option value="16" {{#if (eq derbyHours "16" )}}selected {{/if}}>16</option>
+                                    <option value="17" {{#if (eq derbyHours "17" )}}selected {{/if}}>17</option>
+                                    <option value="18" {{#if (eq derbyHours "18" )}}selected {{/if}}>18</option>
+                                    <option value="19" {{#if (eq derbyHours "19" )}}selected {{/if}}>19</option>
+                                    <option value="20" {{#if (eq derbyHours "20" )}}selected {{/if}}>20</option>
+                                    <option value="21" {{#if (eq derbyHours "21" )}}selected {{/if}}>21</option>
+                                    <option value="22" {{#if (eq derbyHours "22" )}}selected {{/if}}>22</option>
+                                    <option value="23" {{#if (eq derbyHours "23" )}}selected {{/if}}>23</option>
+                                </select>
+                                <select name="derbyMinutes" id="">
+                                    <option value="00" {{#if (eq derbyMinutes "00" )}}selected {{/if}}>00</option>
+                                    <option value="30" {{#if (eq derbyMinutes "30" )}}selected {{/if}}>30</option>
+
+                                </select>
+                            </td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="middleReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../middleReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="linemanReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../linemanReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="secondLinemanReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../secondLinemanReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="fourthReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../fourthReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="varReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../varReferee)}} selected {{/if}}>
+                                        {{refereeName}}
+                                        {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td class="refereeFixture" style="text-align: center;"><select name="secondVarReferee">
+                                    <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
+                                        value="{{_id}}" {{#if (eqIds _id ../secondVarReferee)}} selected {{/if}}>
+                                        {{refereeName}} {{refereeSurName}} </option>{{/each}}
+                                </select></td>
+                            <td>
+                                <input type="hidden" name="_method" value="PUT">
+                                <button type="submit" class="redButton"
+                                    style="width: 5em;height:max-content;">Düzenle</button>
+                            </td>
+                    </form>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{{>sessionFlashMessage}}
+
 <div class="mainPage">
     {{>left-navMain}}
-    <div class="hakemSettings" style="width: 450px;">
-        <div class="boxSettings">
-            <div class="boxSettingsTop" style="margin-left: 2em;">
-                <h2>Fikstür Oluştur</h2>
-                <p>Gerekli bilgileri seçtikten sonra fikstür kendiliğinden oluşturulacaktır.</p>
-            </div>
-            <div class="hr"></div>
-            <div class="boxSettingsMiddle" style="margin-left: 2em;">
-                <form action="/ayarlar/fixture/league" method="POST" class="boxInfo">
-                    <h2>Fikstür Bilgileri</h2>
-                    <div class="topInfo">
-                        <select name="scheduleLeague" style="margin-top: 1em;" id="">
-                            <option value="" disabled selected>Grup Seçiniz</option>
-                            {{#each group}}
-                            <option value="{{_id}}">{{leagueName.leagueName}} - Grup {{add @index 1}}</option>
-                            {{/each}}
-                        </select>
-                        <div class="input-container">
-                            <input type="number" style="width:120px;" name="season" required="" />
-                            <label style="">Lig Sezonu</label>
-                        </div>
-                    </div>
-
-            </div>
-            <div class="hr" style="margin-top:1em;"></div>
-            <div class="optionButtons" style="margin: 1em 2em; display:flex; gap: 3em;">
-                <button type="submit" class="greenButton">Oluştur</button>
-            </div>
-            </form>
-
-        </div>
-
-    </div>
-    <div class="hakemSettings" style="width: 450px;">
-        <div class="boxSettings">
-            <div class="boxSettingsTop" style="margin-left: 2em;">
-                <h2>Maç Oluştur</h2>
-                <p>Maç Oluşturduktan sonra gerekli bilgileri giriniz.</p>
-            </div>
-            <div class="hr"></div>
-            <div class="boxSettingsMiddle" style="margin-left: 2em;">
-                <form action="/ayarlar/fixture/playoff" method="POST" class="boxInfo">
-                    <div class="topInfo" style="margin-top: 1em;">
-                        <select name="homeTeam" id="">
-                            <option value="" disabled selected>Ev Takımı Seçiniz</option>
-                            {{#each team}}
-                            <option value="{{_id}}">{{leagueName.leagueName}} - {{teamName}}</option>
-                            {{/each}}
-                        </select>
-                        <select name="awayTeam" id="">
-                            <option value="" disabled selected>Deplasman Takımı Seçiniz</option>
-                            {{#each team}}
-                            <option value="{{_id}}">{{leagueName.leagueName}} - {{teamName}}</option>
-                            {{/each}}
-                        </select>
-                        <div class="input-container" style="align-items:center;margin-top:2em;">
-                            <input type="number" style="width:120px;" name="season" required="" />
-                            <label style="">Lig Sezonu</label>
-                        </div>
-                        <div class="input-container" style="align-items:center; margin-top:1.7em;">
-                            <input type="date" name="derbyDate" style="width:120px" id=""></td>
-                            <select name="derbyHours" id="">
-                                <option value="09">09</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                            </select>
-                            <select name="derbyMinutes" id="">
-                                <option value="00">00</option>
-                                <option value="30">30</option>
-
-                            </select>
-
-
-                        </div>
-                    </div>
-            </div>
-            <div class="hr" style="margin-top:1em;"></div>
-            <div class="optionButtons" style="margin: 1em 2em; display:flex; gap: 3em;">
-                <button type="submit" class="greenButton">Oluştur</button>
-                <button type="reset" class="cancelButton">İptal</button>
-            </div>
-            <div class="hr"></div>
-            <div class="dangerArea" style="margin: 1em 2em;">
-                <h2>Tehlikeli Bölge <span style="color: red;">!</span></h2>
-                <button class="redButton" disabled>Sil</button>
-            </div>
-            </form>
-
-        </div>
-
-    </div>
     <div class="boxSettings" style="height: 300px;width:max-content;">
         <table class="uk-table uk-table-striped uk-table-hover">
             <thead>
@@ -141,25 +241,25 @@
                         <td><input type="date" value="{{#if derbyDate}}{{moment derbyDate}}{{/if}}" name="derbyDate"
                                 id=""></td>
                         <td> <select name="derbyHours" id="">
-                                <option value="09" {{#if (eq derbyHours "09")}} selected {{/if}}>09</option>
-                                <option value="10" {{#if (eq derbyHours "10")}} selected {{/if}}>10</option>
-                                <option value="11" {{#if (eq derbyHours "11")}}selected {{/if}}>11</option>
-                                <option value="12" {{#if (eq derbyHours "12")}}selected {{/if}}>12</option>
-                                <option value="13" {{#if (eq derbyHours "13")}}selected {{/if}}>13</option>
-                                <option value="14" {{#if (eq derbyHours "14")}}selected {{/if}}>14</option>
-                                <option value="15" {{#if (eq derbyHours "15")}}selected {{/if}}>15</option>
-                                <option value="16" {{#if (eq derbyHours "16")}}selected {{/if}}>16</option>
-                                <option value="17" {{#if (eq derbyHours "17")}}selected {{/if}}>17</option>
-                                <option value="18" {{#if (eq derbyHours "18")}}selected {{/if}}>18</option>
-                                <option value="19" {{#if (eq derbyHours "19")}}selected {{/if}}>19</option>
-                                <option value="20" {{#if (eq derbyHours "20")}}selected {{/if}}>20</option>
-                                <option value="21" {{#if (eq derbyHours "21")}}selected {{/if}}>21</option>
-                                <option value="22" {{#if (eq derbyHours "22")}}selected {{/if}}>22</option>
-                                <option value="23" {{#if (eq derbyHours "23")}}selected {{/if}}>23</option>
+                                <option value="09" {{#if (eq derbyHours "09" )}} selected {{/if}}>09</option>
+                                <option value="10" {{#if (eq derbyHours "10" )}} selected {{/if}}>10</option>
+                                <option value="11" {{#if (eq derbyHours "11" )}}selected {{/if}}>11</option>
+                                <option value="12" {{#if (eq derbyHours "12" )}}selected {{/if}}>12</option>
+                                <option value="13" {{#if (eq derbyHours "13" )}}selected {{/if}}>13</option>
+                                <option value="14" {{#if (eq derbyHours "14" )}}selected {{/if}}>14</option>
+                                <option value="15" {{#if (eq derbyHours "15" )}}selected {{/if}}>15</option>
+                                <option value="16" {{#if (eq derbyHours "16" )}}selected {{/if}}>16</option>
+                                <option value="17" {{#if (eq derbyHours "17" )}}selected {{/if}}>17</option>
+                                <option value="18" {{#if (eq derbyHours "18" )}}selected {{/if}}>18</option>
+                                <option value="19" {{#if (eq derbyHours "19" )}}selected {{/if}}>19</option>
+                                <option value="20" {{#if (eq derbyHours "20" )}}selected {{/if}}>20</option>
+                                <option value="21" {{#if (eq derbyHours "21" )}}selected {{/if}}>21</option>
+                                <option value="22" {{#if (eq derbyHours "22" )}}selected {{/if}}>22</option>
+                                <option value="23" {{#if (eq derbyHours "23" )}}selected {{/if}}>23</option>
                             </select>
                             <select name="derbyMinutes" id="">
-                                <option value="00"{{#if (eq derbyMinutes "00")}}selected {{/if}}>00</option>
-                                <option value="30"{{#if (eq derbyMinutes "30")}}selected {{/if}}>30</option>
+                                <option value="00" {{#if (eq derbyMinutes "00" )}}selected {{/if}}>00</option>
+                                <option value="30" {{#if (eq derbyMinutes "30" )}}selected {{/if}}>30</option>
 
                             </select>
                         </td>

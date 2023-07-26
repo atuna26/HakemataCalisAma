@@ -8,7 +8,7 @@ const Group = require("../models/Group")
 
 
 router.get("/newleague",(req,res) =>{
-    res.render("site/leagueDataScreen")
+    res.render("site/league")
  })
 
 router.get("",(req,res) =>{
@@ -24,7 +24,7 @@ router.get("/:id",(req,res) =>{
         .then(league => {
             Team.find({ leagueName: req.params.id }).sort({teamName:1}).lean().then(team =>{
                 Group.find({leagueName: req.params.id}).populate({path:"teamName", model: Team}).sort({date:1}).lean().then(group =>{
-                    res.render("site/leagueDataScreen", {league:league.toJSON(),team:team,group:group})
+                    res.render("site/league", {league:league.toJSON(),team:team,group:group})
                 })
             })
         })

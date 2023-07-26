@@ -5,6 +5,14 @@ const formattedDate = currentDate.toLocaleString('default', {day:'2-digit',month
 options = document.querySelector(".options")
 
 
+$(selector).hover(function () {
+    // over
+    
+  }, function () {
+    // out
+  }
+);
+
 const dateParts = formattedDate.split('.');
 const dd_mm_yyyy = `${dateParts[1]}.${dateParts[0]}.${dateParts[2]}`;
 

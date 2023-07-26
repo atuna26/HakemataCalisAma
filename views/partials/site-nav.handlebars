@@ -1,19 +1,39 @@
- <nav class="navbar">
-        <div class="container">
-            <div class="topBar">
-                <h1 class="siteName" style="font-size: 0.9em;">hakemata v1.0</h1>
-                <div class="settings">
-                    <ul class="topBarNoti">
-                        <li><i class="fa-solid fa-pen"></i></li>
-                        <li><i class="fa-solid fa-bell"></i></li>
-                        <li><i class="fa-solid fa-user-large"></i></li>
-                    </ul>
+<nav class="navbar-expand-lg bg-body-tertiary bg-photo pt-3">
+    <div class="container-fluid">
+        <div class="row px-5">
+            <div class="col-md-6">
+                <a class="navbar-brand text-light fs-3 fw-medium" href="#">hakemata v1.0</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="col-md-6">
+                <div class="collapse navbar-collapse justify-content-end " id="navbarNavAltMarkup">
+                    <div class="navbar-nav column-gap-4">
+                        <a class="nav-link active text-light fw-lighter text-opacity-75" aria-current="page"
+                            href="/">Atamalar</a>
+                        <a class="nav-link fw-lighter text-light text-opacity-75" href="/ayarlar/referee">Ayarlar</a>
+                        <a class="nav-link fw-lighter text-light text-opacity-75" href="/optimizasyon">Optimizasyon</a>
+                    </div>
                 </div>
             </div>
-            <div class="lowerBar">
-                <ul class="lists">
-                    <a href="/"><li id="atamalar" style="background-color:rgb(35, 34, 66);">Atamalar</li></a>
-                    <a href="/ayarlar/referee"><li id="ayarlar" style="background-color: rgb(14, 46, 60);">Ayarlar</li></a>
-                    <a href="/optimizasyon"><li id="optimizasyon" style="background-color: rgb(19, 19, 35);">Optimizasyon</li></a>
-                </ul>
-                
+        </div>
+    </div>
+    <div class="container row" >
+        <div class="col-md-6" style="padding-left:0;">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav column-gap-4">
+                    <a class="nav-link active fs-4 text-light fw-lighter px-4 text-center" style="background-color: rgb(35, 34, 66);" aria-current="page"
+                        href="/">Atamalar</a>
+                    <a class="nav-link fs-4 fw-lighter text-light px-5 text-center" style="background-color: rgb(14, 46, 60);" href="/ayarlar/referee">Ayarlar</a>
+                    <a class="nav-link fs-4 fw-lighter text-light px-3 text-center" style="background-color: rgb(19, 19, 35);" href="/optimizasyon">Optimizasyon</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 bg-dark">
+            <div class="justify-content-end"></div>
+        </div>
+    </div>
+</nav>

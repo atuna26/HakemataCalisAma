@@ -5,7 +5,7 @@ const League = require("../models/League")
 const Team = require("../models/Team")
 
 router.get("/newreferee",(req,res) =>{
-   res.render("site/hakemDataScreen")
+   res.render("site/ayarlar")
 })
 
 router.get("",(req,res) =>{
@@ -22,7 +22,7 @@ router.get("",(req,res) =>{
 router.get("/:id",(req,res) =>{
         
     Post.findById(req.params.id).then(post => {
-       res.render("site/hakemDataScreen", {post:post.toJSON()})
+       res.render("site/ayarlar", {post:post.toJSON()})
     })
 
 })

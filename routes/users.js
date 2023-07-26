@@ -47,7 +47,20 @@ router.get("/register",(req,res) =>{
 
 router.post("/register",(req,res) =>{
     User.create(req.body, (error,user) =>{
-        res.redirect("/users/login")
+        if(user){
+            req.session.sessionFlash = {
+                type: "uk-alert-primary",
+                message: "Hesap başarıyla oluşturuldu. Lütfen giriş yapınız."
+              }
+            res.redirect("/users/login")
+        }
+        if(error){
+            req.session.sessionFlash = {
+                type: "uk-alert-danger",
+                message: "error"
+              }
+            res.redirect("/users/register")
+        }
     })
 })
 

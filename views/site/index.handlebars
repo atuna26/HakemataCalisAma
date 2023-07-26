@@ -1,322 +1,237 @@
-<div class="barColor"
-    style="background-color: rgb(35, 34, 66); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
-</div>
-</div>
-</div>
-<div class="locations">
-    <ul class="locationsList">
-        <li>Atamalar > Ana Sayfa</li>
+<div class="navbar-expand-lg bg-dark text-light rounded-bottom-4">
+    <ul class="locationsList d-flex justify-content-between" style="padding: 0 30px 0 30px">
+        <li><a href="/ayarlar/referee">Atamalar > Ana Sayfa</a></li>
         <li><i class="fa-solid fa-circle-question"></i></li>
     </ul>
 </div>
-</nav>
+{{>reportBar}}
+<hr class="uk-divider-icon">
 
-<div class="mainPage">
-    {{>reportBar}}
-
-    {{!-- <div class="boxSettings" style="width: 45vw;height:400px">
-        <table id="stacked-example-3"
-            class="charts-css column hide-data show-heading show-labels show-primary-axis show-3-secondary-axes data-spacing-10 multiple stacked">
-            <caption> Hakem Atamaları </caption>
-            <thead>
-                <tr>
-                    <th scope="col"> Toplam </th>
-                    <th scope="col"> Atanan </th>
-                    <th scope="col"> Atanmayan </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="zoom">
-                    <th scope="row"> 1. Hafta </th>
-                    <td style="--size: calc(8 / 8);"><span class="data"> 8 </span></td>
-                    <td style="--size: calc(3 / 8);"><span class="data"> 3 </span></td>
-                    <td style="--size: calc(5 / 8);"><span class="data"> 5 </span></td>
-                </tr>
-                <tr class="zoom">
-                    <th scope="row"> 2. Hafta </th>
-                    <td style="--size: calc(8 / 8);"><span class="data"> 8 </span></td>
-                    <td style="--size: calc(5 / 8);"><span class="data"> 5 </span></td>
-                    <td style="--size: calc(3 / 8);"><span class="data"> 3 </span></td>
-                </tr>
-                <tr class="zoom">
-                    <th scope="row"> 3. Hafta </th>
-                    <td style="--size: calc(8 / 8);"><span class="data"> 8 </span></td>
-                    <td style="--size: calc(4 / 8);"><span class="data"> 4 </span></td>
-                    <td style="--size: calc(4 / 8);"><span class="data"> 4 </span></td>
-                </tr>
-                <tr class="zoom">
-                    <th scope="row"> 4. Hafta </th>
-                    <td style="--size: calc(8 / 8);"><span class="data"> 8 </span></td>
-                    <td style="--size: calc(1 / 8);"><span class="data"> 1 </span></td>
-                    <td style="--size: calc(7 / 8);"><span class="data"> 7 </span></td>
-                </tr>
-                <tr class="zoom">
-                    <th scope="row"> 5. Hafta </th>
-                    <td style="--size: calc(8 / 8);"><span class="data"> 8 </span></td>
-                    <td style="--size: calc(0.5 / 8);"><span class="data"> 0 </span></td>
-                    <td style="--size: calc(0.5 / 8);"><span class="data"> 0 </span></td>
-                </tr>
-                <tr class="zoom">
-                    <th scope="row"> 6. Hafta </th>
-                    <td style="--size: calc(8 / 8);"><span class="data"> 8 </span></td>
-                    <td style="--size: calc(0.5 / 8);"><span class="data"> 0 </span></td>
-                    <td style="--size: calc(0.5 / 8);"><span class="data"> 0 </span></td>
-                </tr>
-                <tr class="zoom">
-                    <th scope="row"> 8. Hafta </th>
-                    <td style="--size: calc(8 / 8);"><span class="data"> 8 </span></td>
-                    <td style="--size: calc(0.5 / 8);"><span class="data"> 0 </span></td>
-                    <td style="--size: calc(0.5 / 8);"><span class="data"> 0 </span></td>
-                </tr>
-                <tr class="zoom">
-                    <th scope="row"> 8. Hafta </th>
-                    <td style="--size: calc(8 / 8);"><span class="data"> 8 </span></td>
-                    <td style="--size: calc(0.5 / 8);"><span class="data"> 0 </span></td>
-                    <td style="--size: calc(0.5 / 8);"><span class="data"> 0 </span></td>
-                </tr>
-
-
-            </tbody>
-        </table>
-    </div> --}}
-
-    {{!-- <div class="boxSettings" style="width: 40vw;height:400px">
-        <table id="line-example-8" class="charts-css line multiple hide-data show-labels">
-            Sistem Performansı
-            <thead>
-                <tr>
-                    <th scope="col"> Year </th>
-                    <th scope="col"> Progress 1 </th>
-                    <th scope="col"> Progress 2 </th>
-                    <th scope="col"> Progress 3 </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"> 2000 </th>
-                    <td style="--start: 0.1; --size: 0.5;"><span class="data"> 50 </span></td>
-                    <td style="--start: 0; --size: 0.2;"><span class="data"> 20 </span></td>
-                    <td style="--start: 0.2; --size: 0.4;"><span class="data"> 40 </span></td>
-                </tr>
-                <tr>
-                    <th scope="row"> 2010 </th>
-                    <td style="--start: 0.5; --size: 0.8;"><span class="data"> 80 </span></td>
-                    <td style="--start: 0.2; --size: 0.5;"><span class="data"> 50 </span></td>
-                    <td style="--start: 0.4; --size: 0.1;"><span class="data"> 10 </span></td>
-                </tr>
-                <tr>
-                    <th scope="row"> 2020 </th>
-                    <td style="--start: 0.8; --size: 0.4;"><span class="data"> 40 </span></td>
-                    <td style="--start: 0.5; --size: 0.3;"><span class="data"> 30 </span></td>
-                    <td style="--start: 0.1; --size: 0.2;"><span class="data"> 20 </span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div> --}}
-    <div class="boxSettings" style="width:max-content;">
-        {{#if groups}} {{else if fixture}} {{else}}<form action="/fikstur/leagueSearch" method="POST" class="boxInfo">
-            {{/if}}
-
-            <div style="text-align:right;">
-                <label for="dateSearchBegin">Başlangıç Tarihi:</label>
-                <input type="date" value="{{moment start}}" default name="dateSearchBegin" id="">
+<div class="container">
+    <div class="row">
+        <div
+            class="uk-card uk-card-default uk-card-large uk-card-body uk-card-hover justify-content-center col-md-3 my-3">
+            {{#if groups}} {{else if fixture}} {{else}}
+            <form action="/fikstur/leagueSearch" method="POST" class="boxInfo">
+                {{/if}}
+                <div class="justify-content-center">
+                    <div class="col-md-12 d-flex align-items-center">
+                        <label class="col-md-6" for="dateSearchBegin">Başlangıç Tarihi:</label>
+                        <div class="col-md-6">
+                            <input class="uk-input py-2" type="date" value="{{moment start}}" name="dateSearchBegin">
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-flex my-2 align-items-center">
+                        <label class="col-md-6 " for="dateSearchFinal">Bitiş Tarihi:</label>
+                        <div class="col-md-6">
+                            <input class="uk-input py-2" type="date" value="{{moment end}}" name="dateSearchFinal">
+                        </div>
+                    </div>
+                    <div class="col-md-12 my-3">
+                        <select class="uk-select" id="" name="leagueSelectFixture" aria-label="Lig Seçiniz">
+                            <option value="" selected disabled>Lig Seçiniz</option>
+                            {{#each league}}
+                            <option value="{{_id}}">{{leagueName}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="col-md-12 my-3">
+                        <select class="uk-select" id="" name="groupSelectFixture" aria-label="Grup Seçiniz">
+                            <option value="" selected disabled>Grup Seçiniz</option>
+                            {{#each group}}
+                            <option value="{{_id}}">{{leagueName.leagueName}} - {{_id}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="row justify-content-center column-gap-2 my-4" style="">
+                        <button type="submit" {{#if groups}}
+                            onclick='window.location.href="/ayarlar/league/"+document.getElementById("leagueSelect").value'
+                            {{/if}} class="col-md-12 greenButton">Aralık için ligleri
+                            ara</button>
+                    </div>
+                </div>
+        </div>
+        {{#if leagues}}
+        <div
+            class="uk-card uk-card-default uk-card-large uk-card-body uk-card-hover justify-content-center col-md-9 my-3 d-flex column-gap-5">
+            <div class="col-md-6">
+                <table class="uk-table uk-table-striped uk-table-hover">
+                    <thead>
+                        <tr>
+                            <th class=" uk-text-center uk-text-middle">Lig Adı</th>
+                            <th class=" uk-text-center">Hakem Atanmış<br> Maç Sayısı</th>
+                            <th class=" uk-text-center">Hakem Atanmamış <br> Maç Sayısı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each leagues}}
+                        <tr>
+                            <td> <a
+                                    href="/lig/{{this.id}}/gruplar?dateSearchBegin={{../start}}&dateSearchFinal={{../end}}">{{this.name}}</a>
+                            </td>
+                            <td style="text-align: center;">{{this.matchesWithReferee}}</td>
+                            <td style="text-align: center;">{{this.withoutReferee}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
-            <div style="text-align:right;">
-                <label for="dateSearchFinal">Bitiş Tarihi:</label>
-                <input type="date" name="dateSearchFinal" value="{{moment end}}" id="">
+            <div class="col-md-6">
+
+                <table id="stacked-example-3"
+                    class="charts-css column hide-data show-heading show-labels show-primary-axis show-3-secondary-axes data-spacing-10 multiple stacked">
+                    <caption> Hakem Atamaları </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"> Toplam </th>
+                            <th scope="col"> Atanan </th>
+                            <th scope="col"> Atanmayan </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each leagues}}
+                        <tr class="zoom">
+                            <th scope="row">{{name}}</th>
+                            <td
+                                style="--size: calc({{this.withoutReferee}} / ({{this.withoutReferee}} + {{this.matchesmatchesWithReferee}}));">
+                                <span class="data"> {{this.withoutReferee}} </span>
+                            </td>
+                            <td
+                                style="--size: calc({{this.matchesmatchesWithReferee}} / ({{this.withoutReferee}} + {{this.matchesmatchesWithReferee}}));">
+                                <span class="data"> 3 </span>
+                            </td>
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
-            <div style="text-align:right;">
-                <select name="leagueSelectFixture">
-                    <option value="" selected disabled>Lig Seçiniz</option>
-                    {{#each league}}
-                    <option value="{{_id}}">{{leagueName}}</option>
+        </div>
+        {{/if}}
+        {{#if groups}}
+        <div
+            class="uk-card uk-card-default uk-card-large uk-card-body uk-card-hover justify-content-center col-md-9 my-3 d-flex column-gap-5">
+            <div class="col-md-6">
+
+                <table class="uk-table uk-table-striped uk-table-hover">
+                    <thead>
+                        <tr>
+                            <th class=" uk-text-center uk-text-middle">Grup Adı</th>
+                            <th class=" uk-text-center">En Az 1 Hakem Atanmış<br> Maç Sayısı</th>
+                            <th class=" uk-text-center"> Hiç Hakem Atanmamış <br> Maç Sayısı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each groups}}
+                        <tr>
+                            <td class="uk-text-center"><a
+                                    href="/grup/{{this.id}}/maclar?dateSearchBegin={{../start}}&dateSearchFinal={{../end}}">{{this.id}}</a>
+                            </td>
+                            <td class="uk-text-center">{{ this.matchesWithReferee }}</td>
+                            <td class="uk-text-center">{{ this.withoutReferee }}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table id="stacked-example-3"
+                    class="charts-css column hide-data show-heading show-labels show-primary-axis show-3-secondary-axes data-spacing-10 multiple stacked">
+                    <caption> Hakem Atamaları </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"> Toplam </th>
+                            <th scope="col"> Atanan </th>
+                            <th scope="col"> Atanmayan </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each groups}}
+                        <tr class="zoom">
+                            <th scope="row">{{id}}</th>
+                            <td
+                                style="--size: calc({{this.withoutReferee}} / ({{this.withoutReferee}} + {{this.matchesWithReferee}}));">
+                                <span class="data"> {{this.withoutReferee}} </span>
+                            </td>
+                            <td
+                                style="--size: calc({{this.matchesWithReferee}} / ({{this.withoutReferee}} + {{this.matchesWithReferee}}));">
+                                <span class="data"> 3 </span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{/if}}
+        {{#if fixture}}
+        <div
+            class="uk-card uk-card-default uk-card-large uk-card-body uk-card-hover justify-content-center col-md-9 my-3 d-flex column-gap-5">
+            <table class="uk-table uk-table-striped uk-table-hover">
+                <thead>
+                    <tr>
+                        <th class=" uk-text-center uk-text-middle">Ev Takımı</th>
+                        <th class=" uk-text-center">Deplasman Takımı</th>
+                        <th class=" uk-text-center">Maç Tarihi</th>
+                        {{#if league.leagueMiddleRefereeIsChecked}}
+                        <th>Orta Hakem</th>
+                        {{/if}}
+                        {{#if league.leagueLinemanIsChecked}}
+                        <th>Yan Hakem</th>
+                        {{/if}}
+                        {{#if league.secondLinemanReferee}}
+                        <th>2. Yan Hakem</th>
+                        {{/if}}
+                        {{#if league.fourthReferee}}
+                        <th>Dördüncü Hakem</th>
+                        {{/if}}
+                        {{#if league.varReferee}}
+                        <th>VAR Hakem</th>
+                        {{/if}}
+                        {{#if league.secondVarReferee}}
+                        <th>2. VAR Hakem</th>
+                        {{/if}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each fixture}}
+                    <tr>
+                        <td class="uk-text-center">{{ awayTeam.teamName }}</td>
+                        <td class="uk-text-center">{{ homeTeam.teamName }}</td>
+                        <td class="uk-text-center">{{moment derbyDate}}</td>
+                        {{#if ../league.leagueMiddleRefereeIsChecked}}
+                        <td class="uk-text-center"><a href="/hakems/{{middleReferee._id}}">{{middleReferee.refereeName}}
+                                {{middleReferee.refereeSurName}}</a></td>
+                        {{/if}}
+                        {{#if ../league.leagueLinemanIsChecked}}
+                        <td class="uk-text-center"><a
+                                href="/hakems/{{linemanReferee._id}}">{{linemanReferee.refereeName}}
+                                {{linemanReferee.refereeSurName}}</a></td>
+                        {{/if}}
+                        {{#if ../league.secondLinemanReferee}}
+                        <td class="uk-text-center"><a
+                                href="/hakems/{{secondLinemanReferee._id}}">{{secondLinemanReferee.refereeName}}
+                                {{secondLinemanReferee.refereeSurName}}</a></td>
+                        {{/if}}
+                        {{#if ../league.fourthReferee}}
+                        <td class="uk-text-center"><a href="/hakems/{{fourthReferee._id}}">{{fourthReferee.refereeName}}
+                                {{fourthReferee.refereeSurName}}</a></td>
+                        {{/if}}
+                        {{#if ../league.varReferee}}
+
+                        <td class="uk-text-center"><a href="/hakems/{{varReferee._id}}">{{varReferee.refereeName}}
+                                {{varReferee.refereeSurName}}</a></td>,{{/if}}
+                        {{#if ../league.secondVarReferee}}
+                        <td class="uk-text-center"><a
+                                href="/hakems/{{secondVarReferee._id}}">{{secondVarReferee.refereeName}}
+                                {{secondVarReferee.refereeSurName}}</a></td>
+                        {{/if}}
+
+                    </tr>
                     {{/each}}
-                </select>
-            </div>
-            <div style="text-align:right;">
-                <select name="groupSelectFixture">
-                    <option value="" selected disabled>Grup Seçiniz</option>
-                    {{#each group}}
-                    <option value="{{_id}}">{{leagueName.leagueName}} - {{_id}}</option>
-                    {{/each}}
-                </select>
-            </div>
-
-            <button type="submit" style="height: 3em;width:12em;margin:1em;" {{#if groups}}
-                onclick='window.location.href="/ayarlar/league/"+document.getElementById("leagueSelect").value' {{/if}}
-                class="greenButton">Aralık için ligleri
-                ara</button>
-
-        </form>
+                </tbody>
+            </table>
+        </div>
+        {{/if}}
     </div>
-    {{#if leagues}}
-    <div class="boxSettings" style="height: 300px;width:max-content;">
-        <table class="uk-table uk-table-striped uk-table-hover">
-            <thead>
-                <tr>
-                    <th class=" uk-text-center uk-text-middle">Lig Adı</th>
-                    <th class=" uk-text-center">Hakem Atanmış<br> Maç Sayısı</th>
-                    <th class=" uk-text-center">Hakem Atanmamış <br> Maç Sayısı</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each leagues}}
-                <tr>
-                    <td> <a
-                            href="/lig/{{this.id}}/gruplar?dateSearchBegin={{../start}}&dateSearchFinal={{../end}}">{{this.name}}</a>
-                    </td>
-                    <td style="text-align: center;">{{this.matchesWithReferee}}</td>
-                    <td style="text-align: center;">{{this.withoutReferee}}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
-    <table id="stacked-example-3" style="height: 300px; width:50vw;"
-        class="charts-css column hide-data show-heading show-labels show-primary-axis show-3-secondary-axes data-spacing-10 multiple stacked">
-        <caption> Hakem Atamaları </caption>
-        <thead>
-            <tr>
-                <th scope="col"> Toplam </th>
-                <th scope="col"> Atanan </th>
-                <th scope="col"> Atanmayan </th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each leagues}}
-            <tr class="zoom">
-                <th scope="row">{{name}}</th>
-                <td
-                    style="--size: calc({{this.withoutReferee}} / ({{this.withoutReferee}} + {{this.matchesmatchesWithReferee}}));">
-                    <span class="data"> {{this.withoutReferee}} </span>
-                </td>
-                <td
-                    style="--size: calc({{this.matchesmatchesWithReferee}} / ({{this.withoutReferee}} + {{this.matchesmatchesWithReferee}}));">
-                    <span class="data"> 3 </span>
-                </td>
-
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-    {{/if}}
-    {{#if groups}}
-    <div class="boxSettings" style="height: 300px;width:max-content;">
-        <table class="uk-table uk-table-striped uk-table-hover">
-            <thead>
-                <tr>
-                    <th class=" uk-text-center uk-text-middle">Grup Adı</th>
-                    <th class=" uk-text-center">En Az 1 Hakem Atanmış<br> Maç Sayısı</th>
-                    <th class=" uk-text-center"> Hiç Hakem Atanmamış <br> Maç Sayısı</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each groups}}
-                <tr>
-                    <td class="uk-text-center"><a
-                            href="/grup/{{this.id}}/maclar?dateSearchBegin={{../start}}&dateSearchFinal={{../end}}">{{this.id}}</a>
-                    </td>
-                    <td class="uk-text-center">{{ this.matchesWithReferee }}</td>
-                    <td class="uk-text-center">{{ this.withoutReferee }}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
-    <table id="stacked-example-3" style="height: 300px; width:50vw;"
-        class="charts-css column hide-data show-heading show-labels show-primary-axis show-3-secondary-axes data-spacing-10 multiple stacked">
-        <caption> Hakem Atamaları </caption>
-        <thead>
-            <tr>
-                <th scope="col"> Toplam </th>
-                <th scope="col"> Atanan </th>
-                <th scope="col"> Atanmayan </th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each groups}}
-            <tr class="zoom">
-                <th scope="row">{{id}}</th>
-                <td
-                    style="--size: calc({{this.withoutReferee}} / ({{this.withoutReferee}} + {{this.matchesWithReferee}}));">
-                    <span class="data"> {{this.withoutReferee}} </span>
-                </td>
-                <td
-                    style="--size: calc({{this.matchesWithReferee}} / ({{this.withoutReferee}} + {{this.matchesWithReferee}}));">
-                    <span class="data"> 3 </span>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-    {{/if}}
-    {{#if fixture}}
-    <div class="boxSettings" style="height: 300px;width:max-content;">
-        <table class="uk-table uk-table-striped uk-table-hover">
-            <thead>
-                <tr>
-                    <th class=" uk-text-center uk-text-middle">Ev Takımı</th>
-                    <th class=" uk-text-center">Deplasman Takımı</th>
-                    <th class=" uk-text-center">Maç Tarihi</th>
-                    {{#if league.leagueMiddleRefereeIsChecked}}
-                    <th>Orta Hakem</th>
-                    {{/if}}
-                    {{#if league.leagueLinemanIsChecked}}
-                    <th>Yan Hakem</th>
-                    {{/if}}
-                    {{#if league.secondLinemanReferee}}
-                    <th>2. Yan Hakem</th>
-                    {{/if}}
-                    {{#if league.fourthReferee}}
-                    <th>Dördüncü Hakem</th>
-                    {{/if}}
-                    {{#if league.varReferee}}
-                    <th>VAR Hakem</th>
-                    {{/if}}
-                    {{#if league.secondVarReferee}}
-                    <th>2. VAR Hakem</th>
-                    {{/if}}
-                </tr>
-            </thead>
-            <tbody>
-                {{#each fixture}}
-                <tr>
-                    <td class="uk-text-center">{{ awayTeam.teamName }}</td>
-                    <td class="uk-text-center">{{ homeTeam.teamName }}</td>
-                    <td class="uk-text-center">{{moment derbyDate}}</td>
-                    {{#if ../league.leagueMiddleRefereeIsChecked}}
-                    <td class="uk-text-center"><a href="/hakems/{{middleReferee._id}}">{{middleReferee.refereeName}}
-                            {{middleReferee.refereeSurName}}</a></td>
-                    {{/if}}
-                    {{#if ../league.leagueLinemanIsChecked}}
-                    <td class="uk-text-center"><a href="/hakems/{{linemanReferee._id}}">{{linemanReferee.refereeName}}
-                            {{linemanReferee.refereeSurName}}</a></td>
-                    {{/if}}
-                    {{#if ../league.secondLinemanReferee}}
-                    <td class="uk-text-center"><a
-                            href="/hakems/{{secondLinemanReferee._id}}">{{secondLinemanReferee.refereeName}}
-                            {{secondLinemanReferee.refereeSurName}}</a></td>
-                    {{/if}}
-                    {{#if ../league.fourthReferee}}
-                    <td class="uk-text-center"><a href="/hakems/{{fourthReferee._id}}">{{fourthReferee.refereeName}}
-                            {{fourthReferee.refereeSurName}}</a></td>
-                    {{/if}}
-                    {{#if ../league.varReferee}}
-
-                    <td class="uk-text-center"><a href="/hakems/{{varReferee._id}}">{{varReferee.refereeName}}
-                            {{varReferee.refereeSurName}}</a></td>,{{/if}}
-                    {{#if ../league.secondVarReferee}}
-                    <td class="uk-text-center"><a
-                            href="/hakems/{{secondVarReferee._id}}">{{secondVarReferee.refereeName}}
-                            {{secondVarReferee.refereeSurName}}</a></td>
-                    {{/if}}
-
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
-    {{/if}}
-
-
 </div>

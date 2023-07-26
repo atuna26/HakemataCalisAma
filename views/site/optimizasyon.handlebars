@@ -1,135 +1,135 @@
-<div class="barColor"
-    style="background-color: rgb(19, 19, 35); width: 100%; text-align:end; color:white; padding-top:0.5em; padding-right:0.7em; opacity:0.8">
-</div>
-</div>
-</div>
-<div class="locations">
-    <ul class="locationsList">
-        <li>Optimizasyon > Ana Sayfa</li>
+<div class="navbar-expand-lg bg-dark text-light rounded-bottom-4">
+    <ul class="locationsList d-flex justify-content-between" style="padding: 0 30px 0 30px">
+        <li><a href="/ayarlar/referee">Optimizasyon > Katsayılar</a></li>
         <li><i class="fa-solid fa-circle-question"></i></li>
     </ul>
 </div>
-</nav>
-
-<div class="mainPage">
-    <section class="leftNagi">
-        <ul class="leftBar">
-            <li style="font-size: 1.33em;"><i class="fa-solid fa-list"></i></li>
-            <li><i class="fa-solid fa-house"></i></li>
-        </ul>
-    </section>
-    <div class="boxSettings">
-        <table class="uk-table uk-table-striped uk-table-hover">
-            <thead>
-                <tr>
-                    <th class=" uk-text-center uk-text-middle">Optimizasyon Katsayıları</th>
-                    <th class=" uk-text-center">Değerler</th>
-                    <th class=" uk-text-center">Cezası</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                 <tr>
-                    <td class="uk-text-center">Hakeme atanabilecek maksimum maç sayısı
-                    </td>
-                    <td class="uk-text-center">
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <form action="">
-                        <td class="uk-text-center">Hakemin bir roundda yönetebileceği maksimum maç sayısı </td>
-                        <td class="uk-text-center">
-                            <div class="input-container">
-                                <input type="number" name="" required="" min="0" value="">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="input-container">
-                                <input type="number" name="" required="" min="0" value="">
-                            </div>
-                        </td>
-                    </form>
-                </tr>
-                <tr>
-                    <td class="uk-text-center">Hakemin bir günde yönetebileceği maksimum maç sayısı</td>
-                    <td class="uk-text-center">
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="uk-text-center">Hakemin bir ligde yönetebileceği maksimum maç sayısı</td>
-                    <td class="uk-text-center">
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="uk-text-center">Hakemin bir takıma ait yönetebileceği maksimum maç sayısı
-                    </td>
-                    <td class="uk-text-center">
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                </tr>
-               
-                <tr>
-                    <td class="uk-text-center">Hakemin bir takıma tekrar atanması için beklenecek hafta sayısı
-                    </td>
-                    <td class="uk-text-center">
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="uk-text-center">Hakemin kaç haftada bir dinleneceği
-                    </td>
-                    <td class="uk-text-center">
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="input-container">
-                            <input type="number" name="" required="" min="0" value="">
-                        </div>
-                    </td>
-                </tr>
 
 
-            </tbody>
-        </table>
+<div class="container mx-3" style="margin-left: 0;">
+    <div class="row justify-content-center">
+        {{>opti-leftNav}}
+        <div
+            class="uk-card uk-card-default uk-card-large uk-card-body uk-card-hover justify-content-center col-md-11 my-3">
+            <form action="/optimizasyon/64bfc1ca9c1676ae9aa17d8f?_method=PUT" method="post">
+            <input type="hidden" name="_method" value="PUT">
+                <table class="uk-table uk-table-striped uk-table-hover">
+                    <thead>
+                        <tr>
+                            <th class=" uk-text-center uk-text-middle">Optimizasyon Katsayıları</th>
+                            <th class=" uk-text-center">Değerler</th>
+                            <th class=" uk-text-center">Cezası</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="uk-text-center">Hakeme atanabilecek maksimum maç sayısı
+                            </td>
+                            <td class="uk-text-center">
+                                <div class="input-container">
+                                    <input type="number" name="nMaxRound" required="" min="0" value="{{optimization.nMaxRound}}">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-container">
+                                    <input type="number" name="nMaxRoundPun" required="" min="0" value="{{optimization.nMaxRoundPun}}">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="uk-text-center">Hakemin bir roundda yönetebileceği maksimum maç sayısı </td>
+                            <td class="uk-text-center">
+                                <div class="input-container">
+                                    <input type="number" name="nMaxSlots" required="" min="0" value="{{optimization.nMaxSlots}}">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-container">
+                                    <input type="number" name="nMaxSlotsPun" required="" min="0" value="{{optimization.nMaxSlotsPun}}">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="uk-text-center">Hakemin bir günde yönetebileceği maksimum maç sayısı</td>
+                            <td class="uk-text-center">
+                                <div class="input-container">
+                                    <input type="number" name="" required="" min="0" value="">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-container">
+                                    <input type="number" name="" required="" min="0" value="">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="uk-text-center">Hakemin bir ligde yönetebileceği maksimum maç sayısı</td>
+                            <td class="uk-text-center">
+                                <div class="input-container">
+                                    <input type="number" name="nMaxGamesLg" required="" min="0" value="{{optimization.nMaxGamesLg}}">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-container">
+                                    <input type="number" name="nMaxGamesLgPun" required="" min="0" value="{{optimization.nMaxGamesLgPun}}">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="uk-text-center">Hakemin bir takıma ait yönetebileceği maksimum maç sayısı
+                            </td>
+                            <td class="uk-text-center">
+                                <div class="input-container">
+                                    <input type="number" name="nMaxGamesTeam" required="" min="0" value="{{optimization.nMaxGamesTeam}}">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-container">
+                                    <input type="number" name="nMaxGamesTeamPun" required="" min="0" value="{{optimization.nMaxGamesTeamPun}}">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="uk-text-center">Hakemin bir takıma tekrar atanması için beklenecek hafta sayısı
+                            </td>
+                            <td class="uk-text-center">
+                                <div class="input-container">
+                                    <input type="number" name="nWait" required="" min="0" value="{{optimization.nWait}}">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-container">
+                                    <input type="number" name="nWaitPun" required="" min="0" value="{{optimization.nWaitPun}}">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="uk-text-center">Hakemin kaç haftada bir dinleneceği
+                            </td>
+                            <td class="uk-text-center">
+                                <div class="input-container">
+                                    <input type="number" name="nRest" required="" min="0" value="{{optimization.nRest}}">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-container">
+                                    <input type="number" name="nRestPun" required="" min="0" value="{{optimization.nRestPun}}">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <div class="row justify-content-end column-gap-2 my-4" style="">
+                    <button type="submit" id="buttonDirector" class="greenButton  col-md-3">Kaydet</button>
+                    <button type="submit" id="buttonDirector" class="cancelButton  col-md-3">Ligler için özel olarak
+                        ayarla</button>
+                </div>
+            </form>
+
+        </div>
     </div>
 </div>
+{{>sessionFlashMessage}}

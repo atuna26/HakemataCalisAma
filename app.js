@@ -99,11 +99,13 @@ app.use((req, res, next) => {
         const team = require("./routes/team")
         const league = require("./routes/league")
         const fixture = require("./routes/fixture")
+        const optimization = require("./routes/optimization")
         app.use("/", main)
         app.use("/ayarlar/referee", referee)
         app.use("/ayarlar/team", team)
         app.use("/ayarlar/league", league)
         app.use("/ayarlar/fixture", fixture)
+        app.use("/optimizasyon", optimization)
     } else {
         res.redirect("/users/login")
     }

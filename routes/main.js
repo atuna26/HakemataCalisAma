@@ -957,9 +957,7 @@ router.post("/fikstur/matchDate",async (req,res) =>{
     })
 })
 
-router.get("/optimizasyon",(req,res) =>{
-    return res.render("site/optimizasyon")
-})
+
 
 // Maçı olan hakemlerin listesi
 router.post("/hakem/matchDate", async (req, res) => {

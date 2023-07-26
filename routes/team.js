@@ -4,7 +4,7 @@ const Team = require("../models/Team")
 const League = require("../models/League")
 
 router.get("/newteam",(req,res) =>{
-    res.render("site/teamDataScreen")
+    res.render("site/team")
 })
 
 
@@ -19,7 +19,7 @@ router.get("",(req,res) =>{
 router.get("/:id",(req,res) =>{
     Team.findById(req.params.id).then(team => {
         League.find({}).sort({leagueName:1}).lean().then(league =>{
-          res.render("site/teamDataScreen", {team:team.toJSON(),league:league})
+          res.render("site/team", {team:team.toJSON(),league:league})
         })
     })
 })
