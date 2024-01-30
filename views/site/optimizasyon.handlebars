@@ -12,7 +12,7 @@
         <div
             class="uk-card uk-card-default uk-card-large uk-card-body uk-card-hover justify-content-center col-md-11 my-3">
             <form action="/optimizasyon/64bfc1ca9c1676ae9aa17d8f?_method=PUT" method="post">
-            <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_method" value="PUT">
                 <table class="uk-table uk-table-striped uk-table-hover">
                     <thead>
                         <tr>
@@ -28,12 +28,14 @@
                             </td>
                             <td class="uk-text-center">
                                 <div class="input-container">
-                                    <input type="number" name="nMaxRound" required="" min="0" value="{{optimization.nMaxRound}}">
+                                    <input type="number" name="nMaxRound" required="" min="0"
+                                        value="{{optimization.nMaxRound}}">
                                 </div>
                             </td>
                             <td>
                                 <div class="input-container">
-                                    <input type="number" name="nMaxRoundPun" required="" min="0" value="{{optimization.nMaxRoundPun}}">
+                                    <input type="number" name="nMaxRoundPun" required="" min="0"
+                                        value="{{optimization.nMaxRoundPun}}">
                                 </div>
                             </td>
                         </tr>
@@ -41,12 +43,14 @@
                             <td class="uk-text-center">Hakemin bir roundda yönetebileceği maksimum maç sayısı </td>
                             <td class="uk-text-center">
                                 <div class="input-container">
-                                    <input type="number" name="nMaxSlots" required="" min="0" value="{{optimization.nMaxSlots}}">
+                                    <input type="number" name="nMaxSlots" required="" min="0"
+                                        value="{{optimization.nMaxSlots}}">
                                 </div>
                             </td>
                             <td>
                                 <div class="input-container">
-                                    <input type="number" name="nMaxSlotsPun" required="" min="0" value="{{optimization.nMaxSlotsPun}}">
+                                    <input type="number" name="nMaxSlotsPun" required="" min="0"
+                                        value="{{optimization.nMaxSlotsPun}}">
                                 </div>
                             </td>
                         </tr>
@@ -67,12 +71,14 @@
                             <td class="uk-text-center">Hakemin bir ligde yönetebileceği maksimum maç sayısı</td>
                             <td class="uk-text-center">
                                 <div class="input-container">
-                                    <input type="number" name="nMaxGamesLg" required="" min="0" value="{{optimization.nMaxGamesLg}}">
+                                    <input type="number" name="nMaxGamesLg" required="" min="0"
+                                        value="{{optimization.nMaxGamesLg}}">
                                 </div>
                             </td>
                             <td>
                                 <div class="input-container">
-                                    <input type="number" name="nMaxGamesLgPun" required="" min="0" value="{{optimization.nMaxGamesLgPun}}">
+                                    <input type="number" name="nMaxGamesLgPun" required="" min="0"
+                                        value="{{optimization.nMaxGamesLgPun}}">
                                 </div>
                             </td>
                         </tr>
@@ -81,12 +87,14 @@
                             </td>
                             <td class="uk-text-center">
                                 <div class="input-container">
-                                    <input type="number" name="nMaxGamesTeam" required="" min="0" value="{{optimization.nMaxGamesTeam}}">
+                                    <input type="number" name="nMaxGamesTeam" required="" min="0"
+                                        value="{{optimization.nMaxGamesTeam}}">
                                 </div>
                             </td>
                             <td>
                                 <div class="input-container">
-                                    <input type="number" name="nMaxGamesTeamPun" required="" min="0" value="{{optimization.nMaxGamesTeamPun}}">
+                                    <input type="number" name="nMaxGamesTeamPun" required="" min="0"
+                                        value="{{optimization.nMaxGamesTeamPun}}">
                                 </div>
                             </td>
                         </tr>
@@ -96,12 +104,14 @@
                             </td>
                             <td class="uk-text-center">
                                 <div class="input-container">
-                                    <input type="number" name="nWait" required="" min="0" value="{{optimization.nWait}}">
+                                    <input type="number" name="nWait" required="" min="0"
+                                        value="{{optimization.nWait}}">
                                 </div>
                             </td>
                             <td>
                                 <div class="input-container">
-                                    <input type="number" name="nWaitPun" required="" min="0" value="{{optimization.nWaitPun}}">
+                                    <input type="number" name="nWaitPun" required="" min="0"
+                                        value="{{optimization.nWaitPun}}">
                                 </div>
                             </td>
                         </tr>
@@ -110,12 +120,14 @@
                             </td>
                             <td class="uk-text-center">
                                 <div class="input-container">
-                                    <input type="number" name="nRest" required="" min="0" value="{{optimization.nRest}}">
+                                    <input type="number" name="nRest" required="" min="0"
+                                        value="{{optimization.nRest}}">
                                 </div>
                             </td>
                             <td>
                                 <div class="input-container">
-                                    <input type="number" name="nRestPun" required="" min="0" value="{{optimization.nRestPun}}">
+                                    <input type="number" name="nRestPun" required="" min="0"
+                                        value="{{optimization.nRestPun}}">
                                 </div>
                             </td>
                         </tr>
@@ -127,8 +139,14 @@
                     <button type="submit" id="buttonDirector" class="cancelButton  col-md-3">Ligler için özel olarak
                         ayarla</button>
                 </div>
-            </form>
 
+            </form>
+            <form action="/optimizasyon/baslat" method="post">
+                <div class="row justify-content-start column-gap-2 my-4" style="">                 
+                    <button type="submit" name="wait" id="buttonDirector" class="redButton  col-md-3">Dosyaları Oluştur</button>
+                    <button type="submit" name="action" id="buttonDirector" class="redButton  col-md-3">Optimizasyonu Başlat</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

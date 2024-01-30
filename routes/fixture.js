@@ -21,7 +21,11 @@ router.get("",(req,res )=>{
 })
 
 router.post("/playoff", async (req,res) => {
-  Fixture.create({...req.body}).then(team =>{
+  let fixtureNumber = 1;
+    const oldfixture = Fixture.findOne().sort({date:-1}).lean()
+    if(oldfixture)
+        fixtureNumber=oldfixture.fixtureId+1
+  Fixture.create({...req.body,fixtureId:fixtureNumber}).then(team =>{
     req.session.sessionFlash = {
       type: "uk-alert-primary",
       message: `Maç Başarıyla oluşturuldu.`
@@ -40,6 +44,12 @@ router.post("/league", async (req, res) => {
   res.redirect("/ayarlar/fixture")}
   else{
   try {
+    let fixtureNumber = 1;
+    const oldfixture = Fixture.findOne().sort({date:-1}).lean()
+    if(oldfixture)
+      fixtureNumber=oldfixture.fixtureId+1
+
+    const derbyLevel = req.body.derbyLevel;
     const season = req.body.season;
     const groupNo = req.body.scheduleLeague;
     const group = await Group.findById(groupNo).populate("teamName");
@@ -59,13 +69,18 @@ router.post("/league", async (req, res) => {
           homeTeam: homeTeam,
           awayTeam: awayTeam,
           season: season,
+          derbyLevel:derbyLevel,
+          fixtureId:fixtureNumber
         });
+        fixtureNumber++
         const fixture2 = new Fixture({
           groupId: groupNo,
           leagueId: leagueNo,
           homeTeam: awayTeam,
           awayTeam: homeTeam,
           season: season,
+          derbyLevel:derbyLevel,
+          fixtureId:fixtureNumber,
         });
         if(leagueId.typeSelect==="Çift Devreli Lig")
         {

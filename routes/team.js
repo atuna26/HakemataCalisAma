@@ -25,8 +25,12 @@ router.get("/:id",(req,res) =>{
 })
 
 router.post("/takim",(req,res) =>{
-   
-    Team.create(req.body)
+  let teamNumber = 1;
+  const oldteam = Team.findOne().sort({date:-1}).lean()
+  if(oldteam)
+    teamNumber=oldteam.teamId+1
+
+    Team.create({...req.body,teamId:teamNumber,})
     .then(team => { //bildirim mesajları diğerlerine de eklenmeli.
       req.session.sessionFlash = {
         type: "uk-alert-primary",

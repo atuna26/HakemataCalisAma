@@ -6,6 +6,7 @@ const Fixture = require("../models/Fixture")
 const Referee = require("../models/Post")
 const Group = require("../models/Group")
 const Post = require("../models/Post")
+const Optimization = require("../models/Optimization")
 const { text } = require("body-parser")
 
 
@@ -127,6 +128,15 @@ router.post('/fikstur/leagueSearch', async (req, res) => {
     console.error(error);
   }
 });
+
+router.get("/ayarlar/system-settings",(req,res)=>{
+  Optimization.findById("64bfc1ca9c1676ae9aa17d8f").then((optimization) => {
+    res.render("site/sistemAyarlari", { optimization: optimization.toJSON() });
+  });
+})
+
+
+
 //aralık için lig aranın devamı grup için
 router.get('/lig/:id/gruplar', async (req, res) => {
   try {

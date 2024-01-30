@@ -2,10 +2,12 @@ const mongoose = require("mongoose")
 const { Schema } = require("mongoose")
 
 const FixtureSchema = new mongoose.Schema({
+    fixtureId:{type:Number},
     groupId: {type: Schema.Types.ObjectId, ref: "Group"},
     leagueId: {type: Schema.Types.ObjectId, ref: "League"},
     homeTeam: {type: Schema.Types.ObjectId, ref: "Team" },
     awayTeam: {type: Schema.Types.ObjectId, ref: "Team"},
+    derbyLevel:{type:Number},
     derbyDate: {type:Date},
     derbyHours: {type:String},
     derbyMinutes: {type:String},

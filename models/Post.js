@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 const { Schema } = require("mongoose")
 
 const PostSchema = new mongoose.Schema({
+    refereeId:{type:Number},
     refereeName: { type: String, require:true},
     refereeSurName: { type: String, require:true},
     refereeNumber: { type: Number, min: 0, require:true, unique:true},

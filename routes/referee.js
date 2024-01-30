@@ -26,10 +26,15 @@ router.get("/:id",(req,res) =>{
     })
 
 })
-router.post("/hakem",(req,res) =>{
 
+router.post("/hakem",(req,res) =>{
+  let refereeNumber = 1;
+  const oldreferee = Post.findOne().sort({date:-1}).lean()
+  if(oldreferee)
+      refereeNumber=oldreferee.refereeId+1
     Post.create({
     ...req.body,
+    refereeId:refereeNumber,
     middleRefereeIsChecked: req.body.middleRefereeIsChecked === "on",
     linemanIsChecked: req.body.linemanIsChecked === "on",
     fourthRefereeIsChecked: req.body.fourthRefereeIsChecked === "on",

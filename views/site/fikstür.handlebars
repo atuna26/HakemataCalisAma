@@ -31,9 +31,13 @@
                                     {{/each}}
                                 </select>
                             </div>
-                            <div class="col-md-12 my-3">
+                            <div class="col-md-6 my-3">
                                 <input class="uk-input" type="number" name="season" required placeholder="Lig Sezonu"
                                     min="0" aria-label="Lig Sezonu">
+                            </div>
+                            <div class="col-md-6 my-3">
+                                <input class="uk-input" type="number" name="derbyLevel" required
+                                    placeholder="Maçların Leveli(1-3)" min="0" aria-label="Maçların Leveli(1-3)">
                             </div>
                             <div class="row justify-content-center column-gap-2 my-4" style="">
                                 <button class="greenButton col-md-4" type="submit">Oluştur</button>
@@ -117,6 +121,17 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-6">
+            <select class="uk-select" id="" name="scheduleLeague" aria-label="Hakem Seçiniz: ">
+                <option value="" disabled selected>Grup Seçiniz</option>
+                {{#each group}}
+                <option value="{{_id}}">{{leagueName.leagueName}} - Grup {{add @index 1}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-md-3 justify-content-center column-gap-2" style="">
+            <button class="greenButton col-md-4" type="submit">Filtrele</button>
+        </div>
         <div class="col-md-12">
             <table class="uk-table uk-table-striped uk-table-hover">
                 <thead>
@@ -125,6 +140,7 @@
                         <th>Deplasman Takımı</th>
                         <th>Maç Tarihi <button onclick="toggleTable()"><i class="fa-solid fa-eye"></i></button></th>
                         <th class="refereeFixture">Maç Saati</th>
+                        <th class="refereeFixture">Maç Leveli</th>
                         <th class="refereeFixture">Orta Hakem</th>
                         <th class="refereeFixture">Yan Hakem</th>
                         <th class="refereeFixture">2. Yan Hakem</th>
@@ -138,9 +154,9 @@
                     {{#each fixture}}
                     <form action="/ayarlar/fixture/{{_id}}?_method=PUT" method="POST">
                         <tr>
-                            <td >{{homeTeam.teamName}}</td>
-                            <td  style="text-align: center;">{{awayTeam.teamName}}</td>
-                            <td ><input type="date" value="{{#if derbyDate}}{{moment derbyDate}}{{/if}}" name="derbyDate"
+                            <td>{{homeTeam.teamName}}</td>
+                            <td style="text-align: center;">{{awayTeam.teamName}}</td>
+                            <td><input type="date" value="{{#if derbyDate}}{{moment derbyDate}}{{/if}}" name="derbyDate"
                                     id=""></td>
                             <td> <select name="derbyHours" id="">
                                     <option value="09" {{#if (eq derbyHours "09" )}} selected {{/if}}>09</option>
@@ -164,6 +180,11 @@
                                     <option value="30" {{#if (eq derbyMinutes "30" )}}selected {{/if}}>30</option>
 
                                 </select>
+                            </td>
+                            <td class="refereeFixture">
+                                <input class="uk-input" type="number" name="derbyLevel" required
+                                    placeholder="Maçların Leveli(1-3)" min="0" aria-label="Maçların Leveli(1-3)">
+
                             </td>
                             <td class="refereeFixture" style="text-align: center;"><select name="middleReferee">
                                     <option value="" disabled selected>Hakem Seçiniz</option>{{#each ../referee}}<option
@@ -213,7 +234,7 @@
 
 {{>sessionFlashMessage}}
 
-<div class="mainPage">
+{{!-- <div class="mainPage">
     {{>left-navMain}}
     <div class="boxSettings" style="height: 300px;width:max-content;">
         <table class="uk-table uk-table-striped uk-table-hover">
@@ -309,4 +330,4 @@
 
     {{>sessionFlashMessage}}
 
-</div>
+</div> --}}

@@ -2,6 +2,9 @@ const mongoose = require("mongoose")
 const { Schema } = require("mongoose")
 
 const OptimizationSchema = new mongoose.Schema({
+    Cr:{type:Number},
+    Gmin:{type:Number},
+    Gmax:{type:Number},
     nMaxRound: {type:Number},
     nMaxRoundPun: {type:Number},
     nMaxSlots: {type:Number},

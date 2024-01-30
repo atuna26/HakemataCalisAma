@@ -1,0 +1,25 @@
+<div class="navbar-expand-lg bg-dark text-light rounded-bottom-4">
+    <ul class="locationsList d-flex justify-content-between" style="padding: 0 30px 0 30px">
+        <li><a href="/ayarlar/referee">Optimizasyon > Katsayılar</a></li>
+        <li><i class="fa-solid fa-circle-question"></i></li>
+    </ul>
+</div>
+
+
+<div class="container mx-3" style="margin-left: 0;">
+    <div class="row justify-content-center">
+        {{>opti-leftNav}}
+        <div
+            class="uk-card uk-card-default uk-card-large uk-card-body uk-card-hover justify-content-center col-md-11 my-3">
+            <form action="/optimizasyon/64bfc1ca9c1676ae9aa17d8f?_method=PUT" method="post">
+            <input type="hidden" name="_method" value="PUT">
+                
+                <div class="row justify-content-end column-gap-2 my-4" style="">
+                    <button type="submit" id="buttonDirector" class="greenButton  col-md-3">Optimizasyonu Başlat</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{{>sessionFlashMessage}}

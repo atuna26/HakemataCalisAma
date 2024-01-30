@@ -54,6 +54,10 @@ router.post("/group",(req,res) =>{
 })
 
 router.post("/lig",(req,res) =>{
+    let leagueNumber = 1;
+    const oldLeague = League.findOne().sort({date:-1}).lean()
+    if(oldLeague)
+        leagueNumber=oldLeague.leagueId+1
     League.create({
         ...req.body,
         leagueMiddleRefereeIsChecked: req.body.leagueMiddleRefereeIsChecked === "on",
@@ -61,7 +65,8 @@ router.post("/lig",(req,res) =>{
         leagueFourthRefereeIsChecked: req.body.leagueFourthRefereeIsChecked === "on",
         leagueVarRefereeIsChecked: req.body.leagueVarRefereeIsChecked === "on",
         leagueSecondLinemanIsChecked: req.body.leagueSecondLinemanIsChecked === "on",
-        leagueSecondVarRefereeIsChecked: req.body.leagueSecondVarRefereeIsChecked === "on"
+        leagueSecondVarRefereeIsChecked: req.body.leagueSecondVarRefereeIsChecked === "on",
+        leagueId:leagueNumber,
     })
     .then(league =>{
         req.session.sessionFlash={
