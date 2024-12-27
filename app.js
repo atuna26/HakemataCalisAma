@@ -3,6 +3,7 @@ const express = require("express")
 const exphbs = require("express-handlebars")
 const app = express()
 const bodyParser = require("body-parser")
+require("dotenv").config();
 const port = 3000
 const hostname = "127.0.0.1"
 const mongoose = require("mongoose")
@@ -11,9 +12,10 @@ const connectMongo = require("connect-mongo")
 const methodOverride = require("method-override")
 const helpers = require('handlebars-helpers');
 const moment = require('moment');
+
 mongoose.set('strictQuery', false);
 
-mongoose.connect("mongodb+srv://alperentuna26:ormVStovLdVRQyUk@atuna.uqlxl3k.mongodb.net/hakematadb", {
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
